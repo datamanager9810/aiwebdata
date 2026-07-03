@@ -1,1 +1,631 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>ADV. HIMANSHU YADAV | AI ENTERPRISE POWER-PANEL v2.5</title>        <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>        <style>        /* Ultra-Premium Dark Futuristic Cyber-Law Theme Layout */        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; }        body { background-color: #030712; color: #f3f4f6; padding: 20px; min-height: 100vh; line-height: 1.5; }                /* Secure Master Gateway Gate Screen */        #login-screen { max-width: 480px; margin: 100px auto; background: #0b1329; padding: 50px 40px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); border: 1px solid #1e3a8a; text-align: center; backdrop-filter: blur(8px); }        #login-screen h2 { color: #38bdf8; margin-bottom: 8px; font-size: 28px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }        #login-screen p { color: #94a3b8; font-size: 14px; margin-bottom: 40px; font-weight: 500; }        .input-group { margin-bottom: 24px; text-align: left; }        .input-group label { display: block; font-size: 13px; color: #38bdf8; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }        .input-field { width: 100%; padding: 15px 18px; background: #030712; border: 2px solid #1e293b; border-radius: 12px; color: white; font-size: 15px; outline: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }        .input-field:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); background: #070f21; }        .login-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3); }        .login-btn:hover { background: linear-gradient(135deg, #0369a1 0%, #075985 100%); transform: translateY(-1px); }        #login-error { color: #f43f5e; font-size: 14px; margin-top: 20px; display: none; background: rgba(244, 63, 94, 0.1); padding: 14px; border-radius: 10px; border: 1px solid rgba(244, 63, 94, 0.2); font-weight: 600; }        /* Dashboard Interface Layout Configuration */        #main-panel { display: none; max-width: 1600px; margin: 0 auto; animation: fadeIn 0.5s ease-out; }        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }                .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 2px solid #1f2937; margin-bottom: 35px; flex-wrap: wrap; gap: 20px; }        .header h1 { color: #38bdf8; font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }        .user-badge { background: #0b1329; padding: 10px 20px; border-radius: 10px; color: #94a3b8; font-size: 14px; border: 1px solid #1e293b; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }        .logout-btn { padding: 8px 16px; background: rgba(244, 63, 94, 0.1); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; cursor: pointer; font-weight: 700; margin-left: 12px; transition: all 0.2s; }        .logout-btn:hover { background: #f43f5e; color: white; }                /* Modern Analytics Dashboard Grid */        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 35px; }        .analytics-card { background: #0b1329; padding: 24px; border-radius: 16px; border: 1px solid #1e293b; text-align: left; transition: transform 0.2s, box-shadow 0.2s; position: relative; }        .analytics-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }        .analytics-card h4 { color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 700; }        .analytics-card .count-val { font-size: 36px; font-weight: 800; color: #f3f4f6; font-family: monospace, sans-serif; }        .analytics-card.blue-theme { border-left: 6px solid #3b82f6; }        .analytics-card.pink-theme { border-left: 6px solid #ec4899; }        .analytics-card.green-theme { border-left: 6px solid #10b981; }        .analytics-card.purple-theme { border-left: 6px solid #a855f7; }        /* File Upload Zone Container */        .upload-container { background: #0b1329; border: 2px dashed #3b82f6; padding: 45px 30px; border-radius: 20px; text-align: center; margin-bottom: 35px; transition: all 0.2s ease; position: relative; }        .upload-container h3 { color: #38bdf8; margin-bottom: 8px; font-size: 22px; font-weight: 700; }        .upload-container p { color: #94a3b8; font-size: 14px; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto; }        .file-input-wrapper { display: inline-block; position: relative; overflow: hidden; }        .real-file-btn { background: #3b82f6; color: white; padding: 14px 32px; border-radius: 10px; font-weight: 700; cursor: pointer; display: inline-block; transition: all 0.2s; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2); }        .real-file-btn:hover { background: #2563eb; }        .real-file-input { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; }        #file-status { color: #10b981; font-weight: 700; margin-top: 20px; font-size: 16px; display: none; background: rgba(16, 185, 129, 0.1); padding: 10px 20px; border-radius: 30px; display: inline-block; border: 1px solid rgba(16, 185, 129, 0.2); }        /* FIXED & SEPARATED: Precision Isolation Filter Architecture */        .filter-section { background: #0b1329; padding: 30px; border-radius: 20px; border: 1px solid #1e293b; margin-bottom: 35px; }        .filter-section h3 { color: #38bdf8; font-size: 18px; margin-bottom: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }        .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; align-items: flex-end; width: 100%; }        .filter-group { display: flex; flex-direction: column; }        .filter-group label { display: block; margin-bottom: 10px; font-size: 13px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }        .select-dropdown { width: 100%; padding: 14px 16px; background: #030712; border: 2px solid #1e293b; border-radius: 12px; color: white; font-size: 15px; outline: none; cursor: pointer; transition: border-color 0.2s; height: 52px; }        .select-dropdown:focus { border-color: #38bdf8; }                /* Global Broadcast Control Box Component */        .broadcast-panel { background: #0b1520; padding: 30px; border-radius: 20px; border: 1px solid #10b981; margin-bottom: 35px; }        .broadcast-panel h3 { color: #10b981; margin-bottom: 10px; font-size: 19px; font-weight: 700; display: flex; align-items: center; gap: 8px; }        .broadcast-grid { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; }        .broadcast-message-area { flex: 3; min-width: 300px; }        .broadcast-btn-group { flex: 1; min-width: 220px; }        /* High Performance Interactive Table Structure */        .table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 5px; flex-wrap: wrap; gap: 10px; }        .table-info-text { color: #94a3b8; font-size: 14px; font-weight: 500; }        .pagination-container { display: flex; gap: 8px; align-items: center; }        .page-btn { background: #1e293b; border: none; color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.2s; }        .page-btn:hover:not(:disabled) { background: #3b82f6; }        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }        #page-number-display { color: #38bdf8; font-weight: 700; font-size: 14px; padding: 0 10px; }        .table-container { background: #0b1329; border-radius: 20px; overflow-x: auto; border: 1px solid #1e293b; margin-bottom: 160px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); width: 100%; -webkit-overflow-scrolling: touch; }        table { width: 100%; border-collapse: collapse; text-align: left; min-width: 1000px; }        th, td { padding: 16px 20px; border-bottom: 1px solid #1e293b; font-size: 15px; vertical-align: middle; white-space: nowrap; }        th { background: #060b19; color: #38bdf8; font-weight: 700; letter-spacing: 0.75px; text-transform: uppercase; font-size: 13px; border-bottom: 2px solid #1e293b; }        tr:hover { background: #111c38; }        .checkbox-cell { width: 65px; text-align: center; }        input[type="checkbox"] { transform: scale(1.3); cursor: pointer; accent-color: #3b82f6; }        /* Profile Fallback & Badge Styling Engine */        .voter-photo { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid #38bdf8; background-color: #1e293b; display: inline-block; vertical-align: middle; }        .gender-tag { padding: 5px 12px; border-radius: 30px; font-size: 12px; font-weight: 700; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; }        .gender-tag.male { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }        .gender-tag.female { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }        .age-badge { background: #1e293b; padding: 4px 8px; border-radius: 6px; font-size: 13px; color: #e5e7eb; font-weight: 600; font-family: monospace; }        /* Floating Dynamic Bulk Messaging Framework */        .floating-action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #0b1329; border-top: 4px solid #10b981; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -20px 50px rgba(0,0,0,0.8); z-index: 1000; display: none; border-radius: 24px 24px 0 0; flex-wrap: wrap; gap: 20px; }        @media(min-width: 992px) { .floating-action-bar { padding: 25px 80px; } }        .message-box { flex: 2; min-width: 350px; }        .message-input { width: 100%; height: 75px; background: #030712; border: 2px solid #1e293b; border-radius: 12px; color: white; padding: 14px; resize: none; outline: none; font-size: 14px; transition: border-color 0.2s; font-weight: 500; }        .message-input:focus { border-color: #10b981; background: #050b17; }        .send-btn { padding: 16px 40px; background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 16px; display: flex; align-items: center; gap: 10px; transition: all 0.2s; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); width: 100%; justify-content: center; }        @media(min-width: 768px) { .send-btn { width: auto; } }        .send-btn:hover { background: linear-gradient(135deg, #16a34a 0%, #166534 100%); transform: translateY(-1px); }                /* Global Toast Notification Engine */        #toast-notification { position: fixed; top: 30px; right: 30px; padding: 16px 28px; background: #10b981; color: white; font-weight: 700; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); z-index: 10000; display: none; animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }        @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }    </style></head><body>    <div id="toast-notification">Notification System Active</div>    <div id="login-screen">        <h2>Secure Master Panel</h2>        <p>ADV. HIMANSHU YADAV | AI PRECISION LOCK ENGINE</p>        <div class="input-group">            <label>Master Username</label>            <input type="text" id="username" class="input-field" placeholder="Enter System Username">        </div>        <div class="input-group">            <label>Master Password</label>            <input type="password" id="password" class="input-field" placeholder="Enter System Password">        </div>        <button class="login-btn" onclick="validateLogin()">Authorize System Access ➔</button>        <div id="login-error">Unauthorized System Access Attempt. Terminated.</div>    </div>    <div id="main-panel">        <div class="header">            <h1>ADV. HIMANSHU YADAV | Legal & Political AI Control Room</h1>            <div>                <span class="user-badge">                    <span style="width:8px;height:8px;background:#10b981;border-radius:50%;display:inline-block;"></span>                    Admin Master: adv@himanshu9810                </span>                <button class="logout-btn" onclick="logout()">Secure Logout</button>            </div>        </div>        <div class="analytics-grid">            <div class="analytics-card blue-theme">                <h4>Total Voters Loaded</h4>                <div id="stat-total" class="count-val">0</div>            </div>            <div class="analytics-card pink-theme">                <h4>AI Female Collected</h4>                <div id="stat-female" class="count-val">0</div>            </div>            <div class="analytics-card green-theme">                <h4>AI Male Collected</h4>                <div id="stat-male" class="count-val">0</div>            </div>            <div class="analytics-card purple-theme">                <h4>Youth Matrix (Age &lt; 35)</h4>                <div id="stat-youth" class="count-val">0</div>            </div>        </div>        <div class="upload-container" id="drop-zone">            <h3>📁 Stream Election Workbook Array (.xlsx / .csv)</h3>            <p>Optimized multi-threaded parsing active. System handles complex metadata schemas, strips formatting anomalies from target telephone records, and triggers the AI Gender Prediction Algorithm instantly.</p>            <div class="file-input-wrapper">                <span class="real-file-btn">Select Data Matrix Asset</span>                <input type="file" id="excel-file-picker" class="real-file-input" accept=".xlsx, .xls, .csv" onchange="processExcelWorkbook(event)">            </div>            <br>            <div id="file-status"></div>        </div>        <div class="filter-section">            <h3>🔍 AI Precision Data Segmentation Engine (सटीक फ़िल्टर खंड)</h3>            <div class="filter-grid">                <div class="filter-group">                    <label>Voter Name / Caste / Surname</label>                    <input type="text" id="name-input" class="input-field" placeholder="Search Name or Surname (e.g., Yadav, Singh)" oninput="executeAIQueryEngine()">                </div>                <div class="filter-group">                    <label>Address / Sector / Block / Ward</label>                    <input type="text" id="address-input" class="input-field" placeholder="Search Exact Area/Block (e.g., Y Block, Barra)" oninput="executeAIQueryEngine()">                </div>                <div class="filter-group">                    <label>Mobile Number Search</label>                    <input type="text" id="mobile-input" class="input-field" placeholder="Search Mobile String (e.g., 9810)" oninput="executeAIQueryEngine()">                </div>                <div class="filter-group">                    <label>Strict Gender Lock</label>                    <select id="gender-select" class="select-dropdown" onchange="executeAIQueryEngine()">                        <option value="ALL">All Genders (Mix)</option>                        <option value="FEMALE">Female Only (महिलाएं)</option>                        <option value="MALE">Male Only (पुरुष)</option>                    </select>                </div>            </div>        </div>        <div class="broadcast-panel">            <h3>📢 Smart Global Tunnel (पूरी फ़िल्टर सूची को कस्टमाइज्ड संदेश भेजें)</h3>            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">बिना टिक किए, ऊपर फ़िल्टर की गई सूची के सभी <span id="broadcast-filter-count" style="color: #10b981; font-weight: bold; font-family: monospace;">0</span> लोगों को ऑटो-वेरिएबल्स के साथ मैक्रो-मैसेज भेजें।</p>            <div class="broadcast-grid">                <div class="broadcast-message-area">                    <textarea id="global-msg-text" class="message-input" style="height: 80px;">नमस्ते [Name] जी, पिता: [Father], आपके क्षेत्र [Address] के स्थानीय विकास और सहयोग बनाए रखने के लिए धन्यवाद। सादर - एडवोकेट हिमांशु यादव।</textarea>                </div>                <div class="broadcast-btn-group">                    <button class="send-btn" onclick="triggerGlobalBroadcastTunnel()" style="height: 80px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);">                        🚀 Trigger Broadcast Stream                    </button>                </div>            </div>        </div>        <div class="table-controls">            <div class="table-info-text" id="table-metrics-tracker">Showing 0 to 0 of 0 records</div>            <div class="pagination-container">                <button class="page-btn" id="btn-prev-page" onclick="changeMatrixPage(-1)">◀ Previous</button>                <span id="page-number-display">Page 1 / 1</span>                <button class="page-btn" id="btn-next-page" onclick="changeMatrixPage(1)">Next ▶</button>            </div>        </div>        <div class="table-container">            <table>                <thead>                    <tr>                        <th class="checkbox-cell"><input type="checkbox" id="select-all" onclick="toggleSelectAll(this)"></th>                        <th>Profile</th>                        <th>Voter Identity Name</th>                        <th>Father / Spouse Name</th>                        <th>Age Matrix</th>                        <th>Workbook Sheet Context / Sector Location Address</th>                        <th>Gender Mode</th>                        <th>Mobile Target String</th>                    </tr>                </thead>                <tbody id="voter-table-body">                    <tr><td colspan="8" style="text-align:center; color:#64748b; padding: 50px; font-weight: 600; letter-spacing: 0.5px;">System Idle Standby. Upload an enterprise election workbook data asset array to initialize operational cycles.</td></tr>                </tbody>            </table>        </div>        <div id="floating-bar" class="floating-action-bar">            <div>                <h4 style="color: #10b981; font-size:18px;"><span id="selected-count" style="font-family:monospace; font-size:22px;">0</span> Target Isolations Engaged</h4>                <p style="font-size: 13px; color: #94a3b8; font-weight:500;">Variables supported: <span style="color:#38bdf8;">[Name], [Father], [Address], [Sheet]</span></p>            </div>            <div class="message-box">                <textarea id="msg-text" class="message-input">Respected [Name] Ji, please maintain your valuable support for local structural development in [Address]. Regards, Advocate Himanshu Yadav.</textarea>            </div>            <button class="send-btn" onclick="triggerBulkCommunicationTunnel()">One-Click Micro-Target WhatsApp Tunnel ➔</button>        </div>    </div>    <script>        const SECURE_USER = "adv@himanshu9810";        const SECURE_PASS = "adv@himanshu14791";        let MASTER_DATA_STORAGE = [];         let currentFilteredStateRecords = [];                 // High-Performance Client Side Memory Pagination Variables        let currentMatrixPage = 1;        const RECORDS_PER_MATRIX_PAGE = 100; // Optimized chunk frame rendering performance size        // Comprehensive Dictionary Base for Indian Female First-Name Heuristics Analysis        const FEMALE_INDICATOR_KEYWORDS = [            "priya", "kumari", "devi", "singhni", "komal", "pooja", "neha", "divya", "jyoti", "anjali",            "preeti", "pinky", "swati", "sapna", "aarti", "reena", "meena", "seema", "kiran", "sharma",            "rekha", "sunita", "anita", "geeta", "sita", "radha", "laxmi", "mamta", "shivani", "monika",            "sonam", "poonam", "kavita", "rashmi", "alka", "rupa", "shweta", "purnima", "priyanka",            "kanchan", "shalu", "ritu", "anjju", "anju", "manju", "kusum", "suman", "sheela", "kamla",            "निधि", "पूजा", "प्रिया", "कुमारी", "देवी", "कोमल", "नेहा", "दिव्या", "ज्योति", "अंजलि",            "प्रीति", "पिंकी", "स्वाति", "सपना", "आरती", "रीना", "मीना", "सीमा", "किरण", "रेखा",            "सुनीता", "अनीता", "गीता", "सीता", "राधा", "लक्ष्मी", "ममता", "शिवानी", "मोनिका", "सोनम",            "पूनम", "कविता", "रश्मि", "अल्का", "रूपा", "श्वेता", "पूर्णिमा", "प्रियंका", "सुमन", "कुसुम"        ];        // Drag and drop zone engagement styling listeners        const dropZone = document.getElementById('drop-zone');        if (dropZone) {            ['dragenter', 'dragover'].forEach(eventName => {                dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }, false);            });            ['dragleave', 'drop'].forEach(eventName => {                dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }, false);            });        }        function showSystemToast(msg, isError = false) {            const t = document.getElementById("toast-notification");            t.innerHTML = msg;            t.style.background = isError ? "#f43f5e" : "#10b981";            t.style.display = "block";            setTimeout(() => { t.style.display = "none"; }, 4000);        }        function validateLogin() {            const u = document.getElementById("username").value.trim();            const p = document.getElementById("password").value.trim();            if (u === SECURE_USER && p === SECURE_PASS) {                document.getElementById("login-screen").style.display = "none";                document.getElementById("main-panel").style.display = "block";                showSystemToast("Secure Encryption Session Authenticated. Master Nodes Loaded.");            } else {                document.getElementById("login-error").style.display = "block";            }        }        function logout() {            document.getElementById("username").value = "";            document.getElementById("password").value = "";            document.getElementById("login-screen").style.display = "block";            document.getElementById("main-panel").style.display = "none";            document.getElementById("floating-bar").style.display = "none";            MASTER_DATA_STORAGE = [];            currentFilteredStateRecords = [];            document.getElementById("file-status").style.display = "none";            document.getElementById("excel-file-picker").value = "";                         // Clear new dedicated inputs            document.getElementById("name-input").value = "";            document.getElementById("address-input").value = "";            document.getElementById("mobile-input").value = "";            document.getElementById("gender-select").value = "ALL";                        updateDashboardMetrics([]);            renderMatrixView();        }        function findMetadataColumn(row, matches) {            for (let prop in row) {                let checkProp = prop.toString().trim().toLowerCase();                if (matches.some(m => checkProp.includes(m))) return row[prop];            }            return "";        }        function cleanPhoneEngineString(val) {            if (!val) return "";            let str = val.toString().replace(/[\s\-\+\.]/g, '');             if (str.includes('e') || str.includes('E')) return "";             if (str.endsWith('0') && val.toString().includes('.')) str = Math.floor(Number(val)).toString();            if (str.startsWith('91') && str.length > 10) str = str.substring(2);            return str.trim();        }        function predictGenderEngine(nameStr, excelGenderField) {            if (excelGenderField) {                let g = excelGenderField.toString().trim().toLowerCase();                if (g.startsWith('f') || g.includes('महिला') || g.includes('स्त्री') || g.includes('fem')) return "FEMALE";                if (g.startsWith('m') || g.includes('पुरुष') || g.includes('male')) return "MALE";            }            if (!nameStr) return "MALE";             let targetedName = nameStr.toLowerCase().trim();            let matchesFemaleKeyword = FEMALE_INDICATOR_KEYWORDS.some(keyword => targetedName.includes(keyword));            if (targetedName.endsWith('a') || targetedName.endsWith('i') || targetedName.endsWith('ी') || targetedName.endsWith('ा')) {                matchesFemaleKeyword = true;            }            return matchesFemaleKeyword ? "FEMALE" : "MALE";        }        function processExcelWorkbook(event) {            const file = event.target.files[0];            if (!file) return;            showSystemToast("Streaming file binary into memory buffers... Please wait.");            const reader = new FileReader();            reader.onload = function(e) {                try {                    const data = new Uint8Array(e.target.result);                    const workbook = XLSX.read(data, { type: 'array' });                                        let recordsCompiledBuffer = [];                    let localCounterIndex = 1;                    workbook.SheetNames.forEach(sheet => {                        const worksheet = workbook.Sheets[sheet];                        const rowsJsonArray = XLSX.utils.sheet_to_json(worksheet, { defval: "" });                        rowsJsonArray.forEach(row => {                            let rawName = findMetadataColumn(row, ["नाम", "name", "voter name", "full name", "first name"]);                            let rawFather = findMetadataColumn(row, ["पिता", "father", "husband", "f_name", "पति"]);                            let rawAddress = findMetadataColumn(row, ["पता", "address", "area", "location", "ward", "booth", "मकान"]);                            let rawMobile = findMetadataColumn(row, ["मोबाइल", "mobile", "phone", "contact", "number"]);                            let rawPhoto = findMetadataColumn(row, ["फोटो", "photo", "image", "pic", "avatar", "link"]);                            let rawAge = findMetadataColumn(row, ["उम्र", "age", "years", "आयु"]);                            let excelGender = findMetadataColumn(row, ["लिंग", "gender", "sex"]);                            if (!rawName && !rawFather && !rawMobile) return;                             let parsedName = rawName ? rawName.toString().trim() : "Unknown";                            let parsedGenderMode = predictGenderEngine(parsedName, excelGender);                            let addressContext = rawAddress ? rawAddress.toString().trim() : "";                            let trackingContext = `[Sheet: ${sheet}]`;                            recordsCompiledBuffer.push({                                id: localCounterIndex++,                                name: parsedName,                                father: rawFather ? rawFather.toString().trim() : "—",                                address: addressContext ? `${addressContext} ${trackingContext}` : trackingContext,                                rawAddressOnly: addressContext ? addressContext : "Local Area",                                gender: parsedGenderMode,                                age: rawAge ? (parseInt(rawAge) || 30) : 30,                                 photo: rawPhoto ? rawPhoto.toString().trim() : "",                                 mobile: cleanPhoneEngineString(rawMobile),                                rawSheetName: sheet                            });                        });                    });                    if(recordsCompiledBuffer.length === 0) {                        showSystemToast("The workbook matrix structure holds zero analytical data rows.", true);                        return;                    }                    MASTER_DATA_STORAGE = recordsCompiledBuffer;                    document.getElementById("file-status").innerHTML = `✓ Core Process Compiled! Extracted ${MASTER_DATA_STORAGE.length} elements across all sheet sectors successfully.`;                    document.getElementById("file-status").style.display = "inline-block";                                        updateDashboardMetrics(MASTER_DATA_STORAGE);                    currentFilteredStateRecords = [...MASTER_DATA_STORAGE];                    currentMatrixPage = 1;                    renderMatrixView();                    showSystemToast(`Successfully indexed ${MASTER_DATA_STORAGE.length} records into high-speed memory structure.`);                } catch (err) {                    showSystemToast("Failure parsing target structural properties file stream.", true);                    console.error(err);                }            };            reader.readAsArrayBuffer(file);        }        function updateDashboardMetrics(recordsArray) {            let total = recordsArray.length;            let females = 0;            let males = 0;            let youth = 0;                        for(let i=0; i<total; i++) {                if(recordsArray[i].gender === "FEMALE") females++;                else males++;                if(recordsArray[i].age < 35) youth++;            }            document.getElementById("stat-total").innerHTML = total;            document.getElementById("stat-female").innerHTML = females;            document.getElementById("stat-male").innerHTML = males;            document.getElementById("stat-youth").innerHTML = youth;            document.getElementById("broadcast-filter-count").innerHTML = total;        }        /* FIXED FIXED FIXED: SEPARATE INDEPENDENT PRECISION QUERY CORE MODULE */        function executeAIQueryEngine() {            const nameToken = document.getElementById("name-input").value.trim().toLowerCase();            const addressToken = document.getElementById("address-input").value.trim().toLowerCase();            const mobileToken = document.getElementById("mobile-input").value.trim();            const targetGenderType = document.getElementById("gender-select").value;            currentFilteredStateRecords = MASTER_DATA_STORAGE.filter(voter => {                // Name Check (Strict Isolation)                if (nameToken && !voter.name.toLowerCase().includes(nameToken)) return false;                // Address/Block Check (Strict Isolation - typing 'y block' will ONLY match actual 'y block' phrases)                if (addressToken && !voter.address.toLowerCase().includes(addressToken)) return false;                // Mobile Check (Strict Isolation)                if (mobileToken && !voter.mobile.includes(mobileToken)) return false;                // Gender Check (Strict Isolation)                if (targetGenderType !== "ALL" && voter.gender !== targetGenderType) return false;                return true;            });            document.getElementById("select-all").checked = false;            document.getElementById("floating-bar").style.display = "none";            document.getElementById("broadcast-filter-count").innerHTML = currentFilteredStateRecords.length;                        currentMatrixPage = 1;            renderMatrixView();        }        // Fragment Rendering & Dom Tree Optimization Framework (Prevents Browser freezing UI)        function renderMatrixView() {            const tbody = document.getElementById("voter-table-body");            tbody.innerHTML = "";            const totalRecords = currentFilteredStateRecords.length;                        if(totalRecords === 0 && MASTER_DATA_STORAGE.length > 0) {                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#64748b; padding:40px; font-weight:600;">Zero records returned matching parameter query strings in compiled data bank.</td></tr>`;                document.getElementById("table-metrics-tracker").innerHTML = "Showing 0 to 0 of 0 records";                updatePaginationControls(0);                return;            } else if (MASTER_DATA_STORAGE.length === 0) {                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#64748b; padding: 50px; font-weight: 600; letter-spacing: 0.5px;">System Idle Standby. Upload an enterprise election workbook data asset array to initialize operational cycles.</td></tr>`;                document.getElementById("table-metrics-tracker").innerHTML = "Showing 0 to 0 of 0 records";                updatePaginationControls(0);                return;            }            const startIndex = (currentMatrixPage - 1) * RECORDS_PER_MATRIX_PAGE;            const endIndex = Math.min(startIndex + RECORDS_PER_MATRIX_PAGE, totalRecords);                        const fragment = document.createDocumentFragment();            for (let i = startIndex; i < endIndex; i++) {                const voter = currentFilteredStateRecords[i];                const tr = document.createElement("tr");                let fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(voter.name)}&background=0b1329&color=38bdf8&size=128&bold=true`;                let photoTagMarkup = `<img src="${fallbackAvatar}" class="voter-photo" alt="Avatar">`;                                if (voter.photo && voter.photo.length > 12 && (voter.photo.startsWith("http") || voter.photo.includes("/"))) {                    photoTagMarkup = `<img src="${voter.photo}" class="voter-photo" onerror="this.src='${fallbackAvatar}'" alt="Voter Photo">`;                }                let genderBadgeMarkup = voter.gender === "FEMALE" ? `<span class="gender-tag female">Female</span>` : `<span class="gender-tag male">Male</span>`;                tr.innerHTML = `                    <td class="checkbox-cell"><input type="checkbox" class="voter-checkbox" value="${voter.id}" onclick="updateFloatingBarState()"></td>                    <td>${photoTagMarkup}</td>                    <td style="font-weight: 700; color: #f3f4f6; font-size:16px;">${voter.name}</td>                    <td style="color: #e5e7eb; font-weight: 500;">${voter.father}</td>                    <td><span class="age-badge">${voter.age}</span></td>                    <td style="color: #94a3b8; max-width: 300px; overflow: hidden; text-overflow: ellipsis;">${voter.address}</td>                    <td>${genderBadgeMarkup}</td>                    <td style="color: #38bdf8; font-weight: 700; font-family: monospace; font-size:15px;">${voter.mobile ? voter.mobile : '—'}</td>                `;                fragment.appendChild(tr);            }            tbody.appendChild(fragment);            document.getElementById("table-metrics-tracker").innerHTML = `Showing ${startIndex + 1} to ${endIndex} of ${totalRecords} entries isolated`;            updatePaginationControls(totalRecords);        }        function updatePaginationControls(totalRecords) {            const maxPage = Math.ceil(totalRecords / RECORDS_PER_MATRIX_PAGE) || 1;            document.getElementById("page-number-display").innerHTML = `Page ${currentMatrixPage} / ${maxPage}`;            document.getElementById("btn-prev-page").disabled = currentMatrixPage === 1;            document.getElementById("btn-next-page").disabled = currentMatrixPage === maxPage;        }        function changeMatrixPage(direction) {            currentMatrixPage += direction;            document.getElementById("select-all").checked = false;            renderMatrixView();        }        function toggleSelectAll(masterBox) {            const checkboxes = document.querySelectorAll(".voter-checkbox");            checkboxes.forEach(cb => cb.checked = masterBox.checked);            updateFloatingBarState();        }        function updateFloatingBarState() {            const selectedBoxes = document.querySelectorAll(".voter-checkbox:checked");            const bar = document.getElementById("floating-bar");            const indicator = document.getElementById("selected-count");            indicator.innerHTML = selectedBoxes.length;            bar.style.display = selectedBoxes.length > 0 ? "flex" : "none";            if(selectedBoxes.length === 0) document.getElementById("select-all").checked = false;        }        function parseDynamicCustomTemplate(templateStr, voterObj) {            return templateStr                .replace(/\[Name\]/g, voterObj.name)                .replace(/\[Father\]/g, voterObj.father)                .replace(/\[Address\]/g, voterObj.rawAddressOnly)                .replace(/\[Sheet\]/g, voterObj.rawSheetName);        }        function triggerBulkCommunicationTunnel() {            const selectedCheckedBoxes = document.querySelectorAll(".voter-checkbox:checked");            const rawTemplateText = document.getElementById("msg-text").value;            if(selectedCheckedBoxes.length === 0) return;            let dispatchedCounter = 0;            selectedCheckedBoxes.forEach((box, index) => {                const targetId = parseInt(box.value);                const targetObject = MASTER_DATA_STORAGE.find(v => v.id === targetId);                                if (targetObject && targetObject.mobile) {                    const dynamicParsedString = parseDynamicCustomTemplate(rawTemplateText, targetObject);                    const parsedFinalUrl = `https://wa.me/91${targetObject.mobile}?text=${encodeURIComponent(dynamicParsedString)}`;                                        setTimeout(() => {                        window.open(parsedFinalUrl, '_blank');                    }, index * 1200);                     dispatchedCounter++;                }            });            showSystemToast(`Communication stream loaded. Initiating windows for ${dispatchedCounter} filtered targets.`);            document.getElementById("select-all").checked = false;            toggleSelectAll({checked: false});        }        function triggerGlobalBroadcastTunnel() {            if(currentFilteredStateRecords.length === 0) {                showSystemToast("No target metrics populated inside search array.", true);                return;            }            const globalTemplateRawText = document.getElementById("global-msg-text").value;            let operationalCounter = 0;            if(confirm(`SYSTEM WARN: Are you sure you want to execute broadcast streams across ${currentFilteredStateRecords.length} records matching current filter frame parameters?`)) {                currentFilteredStateRecords.forEach((voterObj, idx) => {                    if (voterObj.mobile) {                        const compiledMessage = parseDynamicCustomTemplate(globalTemplateRawText, voterObj);                        const endpointTargetUrl = `https://wa.me/91${voterObj.mobile}?text=${encodeURIComponent(compiledMessage)}`;                                                setTimeout(() => {                            window.open(endpointTargetUrl, '_blank');                        }, idx * 1500);                         operationalCounter++;                    }                });                showSystemToast(`Global Broadcast Executed successfully for ${operationalCounter} network streams.`);            }        }    </script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV. HIMANSHU YADAV | AI ENTERPRISE POWER-PANEL v2.5</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    
+    <style>
+        /* Ultra-Premium Dark Futuristic Cyber-Law Theme Layout */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; }
+        body { background-color: #030712; color: #f3f4f6; padding: 20px; min-height: 100vh; line-height: 1.5; }
+        
+        /* Secure Master Gateway Gate Screen */
+        #login-screen { max-width: 480px; margin: 100px auto; background: #0b1329; padding: 50px 40px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); border: 1px solid #1e3a8a; text-align: center; backdrop-filter: blur(8px); }
+        #login-screen h2 { color: #38bdf8; margin-bottom: 8px; font-size: 28px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+        #login-screen p { color: #94a3b8; font-size: 14px; margin-bottom: 40px; font-weight: 500; }
+        .input-group { margin-bottom: 24px; text-align: left; }
+        .input-group label { display: block; font-size: 13px; color: #38bdf8; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .input-field { width: 100%; padding: 15px 18px; background: #030712; border: 2px solid #1e293b; border-radius: 12px; color: white; font-size: 15px; outline: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .input-field:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); background: #070f21; }
+        .login-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3); }
+        .login-btn:hover { background: linear-gradient(135deg, #0369a1 0%, #075985 100%); transform: translateY(-1px); }
+        #login-error { color: #f43f5e; font-size: 14px; margin-top: 20px; display: none; background: rgba(244, 63, 94, 0.1); padding: 14px; border-radius: 10px; border: 1px solid rgba(244, 63, 94, 0.2); font-weight: 600; }
+
+        /* Dashboard Interface Layout Configuration */
+        #main-panel { display: none; max-width: 1600px; margin: 0 auto; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 2px solid #1f2937; margin-bottom: 35px; flex-wrap: wrap; gap: 20px; }
+        .header h1 { color: #38bdf8; font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+        .user-badge { background: #0b1329; padding: 10px 20px; border-radius: 10px; color: #94a3b8; font-size: 14px; border: 1px solid #1e293b; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .logout-btn { padding: 8px 16px; background: rgba(244, 63, 94, 0.1); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; cursor: pointer; font-weight: 700; margin-left: 12px; transition: all 0.2s; }
+        .logout-btn:hover { background: #f43f5e; color: white; }
+        
+        /* Modern Analytics Dashboard Grid */
+        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 35px; }
+        .analytics-card { background: #0b1329; padding: 24px; border-radius: 16px; border: 1px solid #1e293b; text-align: left; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+        .analytics-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .analytics-card h4 { color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 700; }
+        .analytics-card .count-val { font-size: 36px; font-weight: 800; color: #f3f4f6; font-family: monospace, sans-serif; }
+        .analytics-card.blue-theme { border-left: 6px solid #3b82f6; }
+        .analytics-card.pink-theme { border-left: 6px solid #ec4899; }
+        .analytics-card.green-theme { border-left: 6px solid #10b981; }
+        .analytics-card.purple-theme { border-left: 6px solid #a855f7; }
+
+        /* File Upload Zone Container */
+        .upload-container { background: #0b1329; border: 2px dashed #3b82f6; padding: 45px 30px; border-radius: 20px; text-align: center; margin-bottom: 35px; transition: all 0.2s ease; position: relative; }
+        .upload-container h3 { color: #38bdf8; margin-bottom: 8px; font-size: 22px; font-weight: 700; }
+        .upload-container p { color: #94a3b8; font-size: 14px; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .file-input-wrapper { display: inline-block; position: relative; overflow: hidden; }
+        .real-file-btn { background: #3b82f6; color: white; padding: 14px 32px; border-radius: 10px; font-weight: 700; cursor: pointer; display: inline-block; transition: all 0.2s; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2); }
+        .real-file-btn:hover { background: #2563eb; }
+        .real-file-input { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; }
+        #file-status { color: #10b981; font-weight: 700; margin-top: 20px; font-size: 16px; display: none; background: rgba(16, 185, 129, 0.1); padding: 10px 20px; border-radius: 30px; display: inline-block; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+        /* FIXED & SEPARATED: Precision Isolation Filter Architecture */
+        .filter-section { background: #0b1329; padding: 30px; border-radius: 20px; border: 1px solid #1e293b; margin-bottom: 35px; }
+        .filter-section h3 { color: #38bdf8; font-size: 18px; margin-bottom: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; align-items: flex-end; width: 100%; }
+        .filter-group { display: flex; flex-direction: column; }
+        .filter-group label { display: block; margin-bottom: 10px; font-size: 13px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .select-dropdown { width: 100%; padding: 14px 16px; background: #030712; border: 2px solid #1e293b; border-radius: 12px; color: white; font-size: 15px; outline: none; cursor: pointer; transition: border-color 0.2s; height: 52px; }
+        .select-dropdown:focus { border-color: #38bdf8; }
+        
+        /* Global Broadcast Control Box Component */
+        .broadcast-panel { background: #0b1520; padding: 30px; border-radius: 20px; border: 1px solid #10b981; margin-bottom: 35px; }
+        .broadcast-panel h3 { color: #10b981; margin-bottom: 10px; font-size: 19px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .broadcast-grid { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; }
+        .broadcast-message-area { flex: 3; min-width: 300px; }
+        .broadcast-btn-group { flex: 1; min-width: 220px; }
+
+        /* High Performance Interactive Table Structure */
+        .table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 5px; flex-wrap: wrap; gap: 10px; }
+        .table-info-text { color: #94a3b8; font-size: 14px; font-weight: 500; }
+        .pagination-container { display: flex; gap: 8px; align-items: center; }
+        .page-btn { background: #1e293b; border: none; color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+        .page-btn:hover:not(:disabled) { background: #3b82f6; }
+        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        #page-number-display { color: #38bdf8; font-weight: 700; font-size: 14px; padding: 0 10px; }
+
+        .table-container { background: #0b1329; border-radius: 20px; overflow-x: auto; border: 1px solid #1e293b; margin-bottom: 160px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); width: 100%; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; text-align: left; min-width: 1000px; }
+        th, td { padding: 16px 20px; border-bottom: 1px solid #1e293b; font-size: 15px; vertical-align: middle; white-space: nowrap; }
+        th { background: #060b19; color: #38bdf8; font-weight: 700; letter-spacing: 0.75px; text-transform: uppercase; font-size: 13px; border-bottom: 2px solid #1e293b; }
+        tr:hover { background: #111c38; }
+        .checkbox-cell { width: 65px; text-align: center; }
+        input[type="checkbox"] { transform: scale(1.3); cursor: pointer; accent-color: #3b82f6; }
+
+        /* Profile Fallback & Badge Styling Engine */
+        .voter-photo { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid #38bdf8; background-color: #1e293b; display: inline-block; vertical-align: middle; }
+        .gender-tag { padding: 5px 12px; border-radius: 30px; font-size: 12px; font-weight: 700; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; }
+        .gender-tag.male { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .gender-tag.female { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .age-badge { background: #1e293b; padding: 4px 8px; border-radius: 6px; font-size: 13px; color: #e5e7eb; font-weight: 600; font-family: monospace; }
+
+        /* Floating Dynamic Bulk Messaging Framework */
+        .floating-action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #0b1329; border-top: 4px solid #10b981; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -20px 50px rgba(0,0,0,0.8); z-index: 1000; display: none; border-radius: 24px 24px 0 0; flex-wrap: wrap; gap: 20px; }
+        @media(min-width: 992px) { .floating-action-bar { padding: 25px 80px; } }
+        .message-box { flex: 2; min-width: 350px; }
+        .message-input { width: 100%; height: 75px; background: #030712; border: 2px solid #1e293b; border-radius: 12px; color: white; padding: 14px; resize: none; outline: none; font-size: 14px; transition: border-color 0.2s; font-weight: 500; }
+        .message-input:focus { border-color: #10b981; background: #050b17; }
+        .send-btn { padding: 16px 40px; background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 16px; display: flex; align-items: center; gap: 10px; transition: all 0.2s; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); width: 100%; justify-content: center; }
+        @media(min-width: 768px) { .send-btn { width: auto; } }
+        .send-btn:hover { background: linear-gradient(135deg, #16a34a 0%, #166534 100%); transform: translateY(-1px); }
+        
+        /* Global Toast Notification Engine */
+        #toast-notification { position: fixed; top: 30px; right: 30px; padding: 16px 28px; background: #10b981; color: white; font-weight: 700; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); z-index: 10000; display: none; animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="toast-notification">Notification System Active</div>
+
+    <div id="login-screen">
+        <h2>Secure Master Panel</h2>
+        <p>ADV. HIMANSHU YADAV | AI PRECISION LOCK ENGINE</p>
+        <div class="input-group">
+            <label>Master Username</label>
+            <input type="text" id="username" class="input-field" placeholder="Enter System Username">
+        </div>
+        <div class="input-group">
+            <label>Master Password</label>
+            <input type="password" id="password" class="input-field" placeholder="Enter System Password">
+        </div>
+        <button class="login-btn" onclick="validateLogin()">Authorize System Access ➔</button>
+        <div id="login-error">Unauthorized System Access Attempt. Terminated.</div>
+    </div>
+
+    <div id="main-panel">
+        <div class="header">
+            <h1>ADV. HIMANSHU YADAV | Legal & Political AI Control Room</h1>
+            <div>
+                <span class="user-badge">
+                    <span style="width:8px;height:8px;background:#10b981;border-radius:50%;display:inline-block;"></span>
+                    Admin Master: adv@himanshu9810
+                </span>
+                <button class="logout-btn" onclick="logout()">Secure Logout</button>
+            </div>
+        </div>
+
+        <div class="analytics-grid">
+            <div class="analytics-card blue-theme">
+                <h4>Total Voters Loaded</h4>
+                <div id="stat-total" class="count-val">0</div>
+            </div>
+            <div class="analytics-card pink-theme">
+                <h4>AI Female Collected</h4>
+                <div id="stat-female" class="count-val">0</div>
+            </div>
+            <div class="analytics-card green-theme">
+                <h4>AI Male Collected</h4>
+                <div id="stat-male" class="count-val">0</div>
+            </div>
+            <div class="analytics-card purple-theme">
+                <h4>Youth Matrix (Age &lt; 35)</h4>
+                <div id="stat-youth" class="count-val">0</div>
+            </div>
+        </div>
+
+        <div class="upload-container" id="drop-zone">
+            <h3>📁 Stream Election Workbook Array (.xlsx / .csv)</h3>
+            <p>Optimized multi-threaded parsing active. System handles complex metadata schemas, strips formatting anomalies from target telephone records, and triggers the AI Gender Prediction Algorithm instantly.</p>
+            <div class="file-input-wrapper">
+                <span class="real-file-btn">Select Data Matrix Asset</span>
+                <input type="file" id="excel-file-picker" class="real-file-input" accept=".xlsx, .xls, .csv" onchange="processExcelWorkbook(event)">
+            </div>
+            <br>
+            <div id="file-status"></div>
+        </div>
+
+        <div class="filter-section">
+            <h3>🔍 AI Precision Data Segmentation Engine (सटीक फ़िल्टर खंड)</h3>
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label>Voter Name / Caste / Surname</label>
+                    <input type="text" id="name-input" class="input-field" placeholder="Search Name or Surname (e.g., Yadav, Singh)" oninput="executeAIQueryEngine()">
+                </div>
+                <div class="filter-group">
+                    <label>Address / Sector / Block / Ward</label>
+                    <input type="text" id="address-input" class="input-field" placeholder="Search Exact Area/Block (e.g., Y Block, Barra)" oninput="executeAIQueryEngine()">
+                </div>
+                <div class="filter-group">
+                    <label>Mobile Number Search</label>
+                    <input type="text" id="mobile-input" class="input-field" placeholder="Search Mobile String (e.g., 9810)" oninput="executeAIQueryEngine()">
+                </div>
+                <div class="filter-group">
+                    <label>Strict Gender Lock</label>
+                    <select id="gender-select" class="select-dropdown" onchange="executeAIQueryEngine()">
+                        <option value="ALL">All Genders (Mix)</option>
+                        <option value="FEMALE">Female Only (महिलाएं)</option>
+                        <option value="MALE">Male Only (पुरुष)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="broadcast-panel">
+            <h3>📢 Smart Global Tunnel (पूरी फ़िल्टर सूची को कस्टमाइज्ड संदेश भेजें)</h3>
+            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">बिना टिक किए, ऊपर फ़िल्टर की गई सूची के सभी <span id="broadcast-filter-count" style="color: #10b981; font-weight: bold; font-family: monospace;">0</span> लोगों को ऑटो-वेरिएबल्स के साथ मैक्रो-मैसेज भेजें।</p>
+            <div class="broadcast-grid">
+                <div class="broadcast-message-area">
+                    <textarea id="global-msg-text" class="message-input" style="height: 80px;">नमस्ते [Name] जी, पिता: [Father], आपके क्षेत्र [Address] के स्थानीय विकास और सहयोग बनाए रखने के लिए धन्यवाद। सादर - एडवोकेट हिमांशु यादव।</textarea>
+                </div>
+                <div class="broadcast-btn-group">
+                    <button class="send-btn" onclick="triggerGlobalBroadcastTunnel()" style="height: 80px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);">
+                        🚀 Trigger Broadcast Stream
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-controls">
+            <div class="table-info-text" id="table-metrics-tracker">Showing 0 to 0 of 0 records</div>
+            <div class="pagination-container">
+                <button class="page-btn" id="btn-prev-page" onclick="changeMatrixPage(-1)">◀ Previous</button>
+                <span id="page-number-display">Page 1 / 1</span>
+                <button class="page-btn" id="btn-next-page" onclick="changeMatrixPage(1)">Next ▶</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="checkbox-cell"><input type="checkbox" id="select-all" onclick="toggleSelectAll(this)"></th>
+                        <th>Profile</th>
+                        <th>Voter Identity Name</th>
+                        <th>Father / Spouse Name</th>
+                        <th>Age Matrix</th>
+                        <th>Workbook Sheet Context / Sector Location Address</th>
+                        <th>Gender Mode</th>
+                        <th>Mobile Target String</th>
+                    </tr>
+                </thead>
+                <tbody id="voter-table-body">
+                    <tr><td colspan="8" style="text-align:center; color:#64748b; padding: 50px; font-weight: 600; letter-spacing: 0.5px;">System Idle Standby. Upload an enterprise election workbook data asset array to initialize operational cycles.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="floating-bar" class="floating-action-bar">
+            <div>
+                <h4 style="color: #10b981; font-size:18px;"><span id="selected-count" style="font-family:monospace; font-size:22px;">0</span> Target Isolations Engaged</h4>
+                <p style="font-size: 13px; color: #94a3b8; font-weight:500;">Variables supported: <span style="color:#38bdf8;">[Name], [Father], [Address], [Sheet]</span></p>
+            </div>
+            <div class="message-box">
+                <textarea id="msg-text" class="message-input">Respected [Name] Ji, please maintain your valuable support for local structural development in [Address]. Regards, Advocate Himanshu Yadav.</textarea>
+            </div>
+            <button class="send-btn" onclick="triggerBulkCommunicationTunnel()">One-Click Micro-Target WhatsApp Tunnel ➔</button>
+        </div>
+    </div>
+
+    <script>
+        const SECURE_USER = "adv@himanshu9810";
+        const SECURE_PASS = "adv@himanshu14791";
+
+        let MASTER_DATA_STORAGE = []; 
+        let currentFilteredStateRecords = []; 
+        
+        // High-Performance Client Side Memory Pagination Variables
+        let currentMatrixPage = 1;
+        const RECORDS_PER_MATRIX_PAGE = 100; // Optimized chunk frame rendering performance size
+
+        // Comprehensive Dictionary Base for Indian Female First-Name Heuristics Analysis
+        const FEMALE_INDICATOR_KEYWORDS = [
+            "priya", "kumari", "devi", "singhni", "komal", "pooja", "neha", "divya", "jyoti", "anjali",
+            "preeti", "pinky", "swati", "sapna", "aarti", "reena", "meena", "seema", "kiran", "sharma",
+            "rekha", "sunita", "anita", "geeta", "sita", "radha", "laxmi", "mamta", "shivani", "monika",
+            "sonam", "poonam", "kavita", "rashmi", "alka", "rupa", "shweta", "purnima", "priyanka",
+            "kanchan", "shalu", "ritu", "anjju", "anju", "manju", "kusum", "suman", "sheela", "kamla",
+            "निधि", "पूजा", "प्रिया", "कुमारी", "देवी", "कोमल", "नेहा", "दिव्या", "ज्योति", "अंजलि",
+            "प्रीति", "पिंकी", "स्वाति", "सपना", "आरती", "रीना", "मीना", "सीमा", "किरण", "रेखा",
+            "सुनीता", "अनीता", "गीता", "सीता", "राधा", "लक्ष्मी", "ममता", "शिवानी", "मोनिका", "सोनम",
+            "पूनम", "कविता", "रश्मि", "अल्का", "रूपा", "श्वेता", "पूर्णिमा", "प्रियंका", "सुमन", "कुसुम"
+        ];
+
+        // Drag and drop zone engagement styling listeners
+        const dropZone = document.getElementById('drop-zone');
+        if (dropZone) {
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }, false);
+            });
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }, false);
+            });
+        }
+
+        function showSystemToast(msg, isError = false) {
+            const t = document.getElementById("toast-notification");
+            t.innerHTML = msg;
+            t.style.background = isError ? "#f43f5e" : "#10b981";
+            t.style.display = "block";
+            setTimeout(() => { t.style.display = "none"; }, 4000);
+        }
+
+        function validateLogin() {
+            const u = document.getElementById("username").value.trim();
+            const p = document.getElementById("password").value.trim();
+            if (u === SECURE_USER && p === SECURE_PASS) {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("main-panel").style.display = "block";
+                showSystemToast("Secure Encryption Session Authenticated. Master Nodes Loaded.");
+            } else {
+                document.getElementById("login-error").style.display = "block";
+            }
+        }
+
+        function logout() {
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("login-screen").style.display = "block";
+            document.getElementById("main-panel").style.display = "none";
+            document.getElementById("floating-bar").style.display = "none";
+            MASTER_DATA_STORAGE = [];
+            currentFilteredStateRecords = [];
+            document.getElementById("file-status").style.display = "none";
+            document.getElementById("excel-file-picker").value = ""; 
+            
+            // Clear new dedicated inputs
+            document.getElementById("name-input").value = "";
+            document.getElementById("address-input").value = "";
+            document.getElementById("mobile-input").value = "";
+            document.getElementById("gender-select").value = "ALL";
+            
+            updateDashboardMetrics([]);
+            renderMatrixView();
+        }
+
+        function findMetadataColumn(row, matches) {
+            for (let prop in row) {
+                let checkProp = prop.toString().trim().toLowerCase();
+                if (matches.some(m => checkProp.includes(m))) return row[prop];
+            }
+            return "";
+        }
+
+        function cleanPhoneEngineString(val) {
+            if (!val) return "";
+            let str = val.toString().replace(/[\s\-\+\.]/g, ''); 
+            if (str.includes('e') || str.includes('E')) return ""; 
+            if (str.endsWith('0') && val.toString().includes('.')) str = Math.floor(Number(val)).toString();
+            if (str.startsWith('91') && str.length > 10) str = str.substring(2);
+            return str.trim();
+        }
+
+        function predictGenderEngine(nameStr, excelGenderField) {
+            if (excelGenderField) {
+                let g = excelGenderField.toString().trim().toLowerCase();
+                if (g.startsWith('f') || g.includes('महिला') || g.includes('स्त्री') || g.includes('fem')) return "FEMALE";
+                if (g.startsWith('m') || g.includes('पुरुष') || g.includes('male')) return "MALE";
+            }
+            if (!nameStr) return "MALE"; 
+            let targetedName = nameStr.toLowerCase().trim();
+            let matchesFemaleKeyword = FEMALE_INDICATOR_KEYWORDS.some(keyword => targetedName.includes(keyword));
+            if (targetedName.endsWith('a') || targetedName.endsWith('i') || targetedName.endsWith('ी') || targetedName.endsWith('ा')) {
+                matchesFemaleKeyword = true;
+            }
+            return matchesFemaleKeyword ? "FEMALE" : "MALE";
+        }
+
+        function processExcelWorkbook(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            showSystemToast("Streaming file binary into memory buffers... Please wait.");
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    
+                    let recordsCompiledBuffer = [];
+                    let localCounterIndex = 1;
+
+                    workbook.SheetNames.forEach(sheet => {
+                        const worksheet = workbook.Sheets[sheet];
+                        const rowsJsonArray = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+
+                        rowsJsonArray.forEach(row => {
+                            let rawName = findMetadataColumn(row, ["नाम", "name", "voter name", "full name", "first name"]);
+                            let rawFather = findMetadataColumn(row, ["पिता", "father", "husband", "f_name", "पति"]);
+                            let rawAddress = findMetadataColumn(row, ["पता", "address", "area", "location", "ward", "booth", "मकान"]);
+                            let rawMobile = findMetadataColumn(row, ["मोबाइल", "mobile", "phone", "contact", "number"]);
+                            let rawPhoto = findMetadataColumn(row, ["फोटो", "photo", "image", "pic", "avatar", "link"]);
+                            let rawAge = findMetadataColumn(row, ["उम्र", "age", "years", "आयु"]);
+                            let excelGender = findMetadataColumn(row, ["लिंग", "gender", "sex"]);
+
+                            if (!rawName && !rawFather && !rawMobile) return; 
+
+                            let parsedName = rawName ? rawName.toString().trim() : "Unknown";
+                            let parsedGenderMode = predictGenderEngine(parsedName, excelGender);
+
+                            let addressContext = rawAddress ? rawAddress.toString().trim() : "";
+                            let trackingContext = `[Sheet: ${sheet}]`;
+
+                            recordsCompiledBuffer.push({
+                                id: localCounterIndex++,
+                                name: parsedName,
+                                father: rawFather ? rawFather.toString().trim() : "—",
+                                address: addressContext ? `${addressContext} ${trackingContext}` : trackingContext,
+                                rawAddressOnly: addressContext ? addressContext : "Local Area",
+                                gender: parsedGenderMode,
+                                age: rawAge ? (parseInt(rawAge) || 30) : 30, 
+                                photo: rawPhoto ? rawPhoto.toString().trim() : "", 
+                                mobile: cleanPhoneEngineString(rawMobile),
+                                rawSheetName: sheet
+                            });
+                        });
+                    });
+
+                    if(recordsCompiledBuffer.length === 0) {
+                        showSystemToast("The workbook matrix structure holds zero analytical data rows.", true);
+                        return;
+                    }
+
+                    MASTER_DATA_STORAGE = recordsCompiledBuffer;
+                    document.getElementById("file-status").innerHTML = `✓ Core Process Compiled! Extracted ${MASTER_DATA_STORAGE.length} elements across all sheet sectors successfully.`;
+                    document.getElementById("file-status").style.display = "inline-block";
+                    
+                    updateDashboardMetrics(MASTER_DATA_STORAGE);
+                    currentFilteredStateRecords = [...MASTER_DATA_STORAGE];
+                    currentMatrixPage = 1;
+                    renderMatrixView();
+                    showSystemToast(`Successfully indexed ${MASTER_DATA_STORAGE.length} records into high-speed memory structure.`);
+                } catch (err) {
+                    showSystemToast("Failure parsing target structural properties file stream.", true);
+                    console.error(err);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function updateDashboardMetrics(recordsArray) {
+            let total = recordsArray.length;
+            let females = 0;
+            let males = 0;
+            let youth = 0;
+            
+            for(let i=0; i<total; i++) {
+                if(recordsArray[i].gender === "FEMALE") females++;
+                else males++;
+                if(recordsArray[i].age < 35) youth++;
+            }
+
+            document.getElementById("stat-total").innerHTML = total;
+            document.getElementById("stat-female").innerHTML = females;
+            document.getElementById("stat-male").innerHTML = males;
+            document.getElementById("stat-youth").innerHTML = youth;
+            document.getElementById("broadcast-filter-count").innerHTML = total;
+        }
+
+        /* FIXED FIXED FIXED: SEPARATE INDEPENDENT PRECISION QUERY CORE MODULE */
+        function executeAIQueryEngine() {
+            const nameToken = document.getElementById("name-input").value.trim().toLowerCase();
+            const addressToken = document.getElementById("address-input").value.trim().toLowerCase();
+            const mobileToken = document.getElementById("mobile-input").value.trim();
+            const targetGenderType = document.getElementById("gender-select").value;
+
+            currentFilteredStateRecords = MASTER_DATA_STORAGE.filter(voter => {
+                // Name Check (Strict Isolation)
+                if (nameToken && !voter.name.toLowerCase().includes(nameToken)) return false;
+
+                // Address/Block Check (Strict Isolation - typing 'y block' will ONLY match actual 'y block' phrases)
+                if (addressToken && !voter.address.toLowerCase().includes(addressToken)) return false;
+
+                // Mobile Check (Strict Isolation)
+                if (mobileToken && !voter.mobile.includes(mobileToken)) return false;
+
+                // Gender Check (Strict Isolation)
+                if (targetGenderType !== "ALL" && voter.gender !== targetGenderType) return false;
+
+                return true;
+            });
+
+            document.getElementById("select-all").checked = false;
+            document.getElementById("floating-bar").style.display = "none";
+            document.getElementById("broadcast-filter-count").innerHTML = currentFilteredStateRecords.length;
+            
+            currentMatrixPage = 1;
+            renderMatrixView();
+        }
+
+        // Fragment Rendering & Dom Tree Optimization Framework (Prevents Browser freezing UI)
+        function renderMatrixView() {
+            const tbody = document.getElementById("voter-table-body");
+            tbody.innerHTML = "";
+
+            const totalRecords = currentFilteredStateRecords.length;
+            
+            if(totalRecords === 0 && MASTER_DATA_STORAGE.length > 0) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#64748b; padding:40px; font-weight:600;">Zero records returned matching parameter query strings in compiled data bank.</td></tr>`;
+                document.getElementById("table-metrics-tracker").innerHTML = "Showing 0 to 0 of 0 records";
+                updatePaginationControls(0);
+                return;
+            } else if (MASTER_DATA_STORAGE.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#64748b; padding: 50px; font-weight: 600; letter-spacing: 0.5px;">System Idle Standby. Upload an enterprise election workbook data asset array to initialize operational cycles.</td></tr>`;
+                document.getElementById("table-metrics-tracker").innerHTML = "Showing 0 to 0 of 0 records";
+                updatePaginationControls(0);
+                return;
+            }
+
+            const startIndex = (currentMatrixPage - 1) * RECORDS_PER_MATRIX_PAGE;
+            const endIndex = Math.min(startIndex + RECORDS_PER_MATRIX_PAGE, totalRecords);
+            
+            const fragment = document.createDocumentFragment();
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const voter = currentFilteredStateRecords[i];
+                const tr = document.createElement("tr");
+
+                let fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(voter.name)}&background=0b1329&color=38bdf8&size=128&bold=true`;
+                let photoTagMarkup = `<img src="${fallbackAvatar}" class="voter-photo" alt="Avatar">`;
+                
+                if (voter.photo && voter.photo.length > 12 && (voter.photo.startsWith("http") || voter.photo.includes("/"))) {
+                    photoTagMarkup = `<img src="${voter.photo}" class="voter-photo" onerror="this.src='${fallbackAvatar}'" alt="Voter Photo">`;
+                }
+
+                let genderBadgeMarkup = voter.gender === "FEMALE" ? `<span class="gender-tag female">Female</span>` : `<span class="gender-tag male">Male</span>`;
+
+                tr.innerHTML = `
+                    <td class="checkbox-cell"><input type="checkbox" class="voter-checkbox" value="${voter.id}" onclick="updateFloatingBarState()"></td>
+                    <td>${photoTagMarkup}</td>
+                    <td style="font-weight: 700; color: #f3f4f6; font-size:16px;">${voter.name}</td>
+                    <td style="color: #e5e7eb; font-weight: 500;">${voter.father}</td>
+                    <td><span class="age-badge">${voter.age}</span></td>
+                    <td style="color: #94a3b8; max-width: 300px; overflow: hidden; text-overflow: ellipsis;">${voter.address}</td>
+                    <td>${genderBadgeMarkup}</td>
+                    <td style="color: #38bdf8; font-weight: 700; font-family: monospace; font-size:15px;">${voter.mobile ? voter.mobile : '—'}</td>
+                `;
+                fragment.appendChild(tr);
+            }
+
+            tbody.appendChild(fragment);
+            document.getElementById("table-metrics-tracker").innerHTML = `Showing ${startIndex + 1} to ${endIndex} of ${totalRecords} entries isolated`;
+            updatePaginationControls(totalRecords);
+        }
+
+        function updatePaginationControls(totalRecords) {
+            const maxPage = Math.ceil(totalRecords / RECORDS_PER_MATRIX_PAGE) || 1;
+            document.getElementById("page-number-display").innerHTML = `Page ${currentMatrixPage} / ${maxPage}`;
+            document.getElementById("btn-prev-page").disabled = currentMatrixPage === 1;
+            document.getElementById("btn-next-page").disabled = currentMatrixPage === maxPage;
+        }
+
+        function changeMatrixPage(direction) {
+            currentMatrixPage += direction;
+            document.getElementById("select-all").checked = false;
+            renderMatrixView();
+        }
+
+        function toggleSelectAll(masterBox) {
+            const checkboxes = document.querySelectorAll(".voter-checkbox");
+            checkboxes.forEach(cb => cb.checked = masterBox.checked);
+            updateFloatingBarState();
+        }
+
+        function updateFloatingBarState() {
+            const selectedBoxes = document.querySelectorAll(".voter-checkbox:checked");
+            const bar = document.getElementById("floating-bar");
+            const indicator = document.getElementById("selected-count");
+
+            indicator.innerHTML = selectedBoxes.length;
+            bar.style.display = selectedBoxes.length > 0 ? "flex" : "none";
+            if(selectedBoxes.length === 0) document.getElementById("select-all").checked = false;
+        }
+
+        function parseDynamicCustomTemplate(templateStr, voterObj) {
+            return templateStr
+                .replace(/\[Name\]/g, voterObj.name)
+                .replace(/\[Father\]/g, voterObj.father)
+                .replace(/\[Address\]/g, voterObj.rawAddressOnly)
+                .replace(/\[Sheet\]/g, voterObj.rawSheetName);
+        }
+
+        function triggerBulkCommunicationTunnel() {
+            const selectedCheckedBoxes = document.querySelectorAll(".voter-checkbox:checked");
+            const rawTemplateText = document.getElementById("msg-text").value;
+
+            if(selectedCheckedBoxes.length === 0) return;
+
+            let dispatchedCounter = 0;
+            selectedCheckedBoxes.forEach((box, index) => {
+                const targetId = parseInt(box.value);
+                const targetObject = MASTER_DATA_STORAGE.find(v => v.id === targetId);
+                
+                if (targetObject && targetObject.mobile) {
+                    const dynamicParsedString = parseDynamicCustomTemplate(rawTemplateText, targetObject);
+                    const parsedFinalUrl = `https://wa.me/91${targetObject.mobile}?text=${encodeURIComponent(dynamicParsedString)}`;
+                    
+                    setTimeout(() => {
+                        window.open(parsedFinalUrl, '_blank');
+                    }, index * 1200); 
+                    dispatchedCounter++;
+                }
+            });
+
+            showSystemToast(`Communication stream loaded. Initiating windows for ${dispatchedCounter} filtered targets.`);
+            document.getElementById("select-all").checked = false;
+            toggleSelectAll({checked: false});
+        }
+
+        function triggerGlobalBroadcastTunnel() {
+            if(currentFilteredStateRecords.length === 0) {
+                showSystemToast("No target metrics populated inside search array.", true);
+                return;
+            }
+
+            const globalTemplateRawText = document.getElementById("global-msg-text").value;
+            let operationalCounter = 0;
+
+            if(confirm(`SYSTEM WARN: Are you sure you want to execute broadcast streams across ${currentFilteredStateRecords.length} records matching current filter frame parameters?`)) {
+                currentFilteredStateRecords.forEach((voterObj, idx) => {
+                    if (voterObj.mobile) {
+                        const compiledMessage = parseDynamicCustomTemplate(globalTemplateRawText, voterObj);
+                        const endpointTargetUrl = `https://wa.me/91${voterObj.mobile}?text=${encodeURIComponent(compiledMessage)}`;
+                        
+                        setTimeout(() => {
+                            window.open(endpointTargetUrl, '_blank');
+                        }, idx * 1500); 
+                        operationalCounter++;
+                    }
+                });
+                showSystemToast(`Global Broadcast Executed successfully for ${operationalCounter} network streams.`);
+            }
+        }
+    </script>
+</body>
+</html>
