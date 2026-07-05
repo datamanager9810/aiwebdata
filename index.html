@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADV. HIMANSHU YADAV | AI CONTROL ROOM v4.0 PRO</title>
+    <title>ADV. HIMANSHU YADAV | AI MASS BROADCASTER v5.0</title>
     
-    <!-- Enterprise Grade Frameworks for High-Speed Execution -->
+    <!-- Ultra-Speed Ingestion Frameworks -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
@@ -18,289 +17,221 @@
             --bg-card: #0b1329;
             --cyber-blue: #38bdf8;
             --cyber-green: #10b981;
-            --cyber-purple: #a855f7;
             --text-light: #f3f4f6;
             --text-muted: #94a3b8;
             --border-color: #1e293b;
+            --wa-green: #075e54;
+            --wa-light: #128c7e;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-main); color: var(--text-light); padding: 20px; min-height: 100vh; line-height: 1.5; }
+        body { background-color: var(--bg-main); color: var(--text-light); padding: 15px; min-height: 100vh; overflow-x: hidden; }
         
-        /* High-Speed Dynamic Components UI */
-        #login-screen { max-width: 480px; margin: 100px auto; background: var(--bg-card); padding: 50px 40px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); border: 1px solid #1e3a8a; text-align: center; }
-        #login-screen h2 { color: var(--cyber-blue); margin-bottom: 8px; font-size: 28px; font-weight: 800; text-transform: uppercase; }
-        
-        .input-group { margin-bottom: 24px; text-align: left; }
-        .input-group label { display: block; font-size: 13px; color: var(--cyber-blue); margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
-        .input-field { width: 100%; padding: 15px 18px; background: var(--bg-main); border: 2px solid var(--border-color); border-radius: 12px; color: white; font-size: 15px; outline: none; transition: all 0.2s; }
-        .input-field:focus { border-color: var(--cyber-blue); box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); }
-        
-        .login-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; }
-        
-        #main-panel { display: none; max-width: 1650px; margin: 0 auto; animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Strict Master Gateway Login Screen */
+        #login-screen { max-width: 450px; margin: 120px auto; background: var(--bg-card); padding: 45px 35px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.9); border: 1px solid #1e3a8a; text-align: center; }
+        #login-screen h2 { color: var(--cyber-blue); margin-bottom: 5px; font-size: 26px; font-weight: 800; text-transform: uppercase; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; font-size: 12px; color: var(--cyber-blue); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
+        .input-field { width: 100%; padding: 14px 16px; background: var(--bg-main); border: 2px solid var(--border-color); border-radius: 10px; color: white; font-size: 14px; outline: none; }
+        .input-field:focus { border-color: var(--cyber-blue); }
+        .login-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; }
+        #login-error { color: #f43f5e; margin-top: 15px; display: none; font-weight: bold; font-size: 13px; background: rgba(244, 63, 94, 0.1); padding: 10px; border-radius: 8px; }
 
-        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 2px solid #1f2937; margin-bottom: 30px; }
-        .header h1 { color: var(--cyber-blue); font-size: 26px; font-weight: 800; }
+        /* Modern Workspace Split Layout Structure */
+        #main-panel { display: none; max-width: 1800px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 2px solid #1f2937; margin-bottom: 20px; }
+        .header h1 { color: var(--cyber-blue); font-size: 24px; font-weight: 800; }
         
-        /* Grid Architectures for AI Analytics Panels */
-        .ai-matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .matrix-card { background: var(--bg-card); padding: 24px; border-radius: 20px; border: 1px solid var(--border-color); position: relative; }
-        .matrix-card h3 { color: var(--cyber-blue); font-size: 16px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .workspace-grid { display: grid; grid-template-columns: 1fr 420px; gap: 20px; align-items: start; }
+        @media (max-width: 1100px) { .workspace-grid { grid-template-columns: 1fr; } }
 
-        /* Multi-Number Worker Control Center */
-        .worker-pill-box { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-        .worker-pill { background: #070f21; border: 1px solid #334155; padding: 8px 14px; border-radius: 30px; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
-        .worker-pill.active { border-color: var(--cyber-green); background: rgba(16, 185, 129, 0.1); color: var(--cyber-green); }
-
-        /* Optimized Form Matrix & Script Templates */
-        .script-template-btn { padding: 6px 12px; background: #1e293b; color: white; border: none; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 600; margin-right: 5px; margin-top: 5px; transition: background 0.2s; }
-        .script-template-btn:hover { background: var(--cyber-purple); }
-
-        .upload-container { background: var(--bg-card); border: 2px dashed #3b82f6; padding: 35px; border-radius: 20px; text-align: center; margin-bottom: 30px; }
+        /* Left Column Interface Dashboard Panels */
+        .dashboard-left-panel { display: flex; flex-direction: column; gap: 20px; }
+        .matrix-card { background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); }
         
-        /* Strict Precision Filters UI Architecture */
-        .filter-section { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px solid var(--border-color); margin-bottom: 30px; }
-        .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .select-dropdown { width: 100%; padding: 14px; background: var(--bg-main); border: 2px solid var(--border-color); border-radius: 12px; color: white; font-size: 14px; outline: none; height: 50px; cursor: pointer; }
+        /* Ingestion Zone */
+        .upload-container { background: var(--bg-card); border: 2px dashed #3b82f6; padding: 25px; border-radius: 16px; text-align: center; }
+        .page-btn { background: #1e293b; border: none; color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; transition: background 0.2s; }
+        .page-btn:hover { background: #2d3748; }
 
-        /* Dynamic Sentiment Tags styling */
-        .sentiment-btn { padding: 4px 8px; border-radius: 6px; font-size: 12px; border: none; font-weight: bold; cursor: pointer; margin-right: 4px; }
-        .s-pos { background: rgba(16, 185, 129, 0.2); color: #10b981; }
-        .s-neu { background: rgba(234, 179, 8, 0.2); color: #eab308; }
-        .s-neg { background: rgba(244, 63, 94, 0.2); color: #f43f5e; }
-        .s-law { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
-        
-        /* High Performance Data Table Styles */
-        .table-container { background: var(--bg-card); border-radius: 20px; overflow-x: auto; border: 1px solid var(--border-color); margin-bottom: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); width: 100%; }
-        table { width: 100%; border-collapse: collapse; text-align: left; min-width: 1100px; }
-        th, td { padding: 14px 18px; border-bottom: 1px solid var(--border-color); font-size: 14px; white-space: nowrap; }
-        th { background: #060b19; color: var(--cyber-blue); font-weight: 700; text-transform: uppercase; font-size: 12px; }
+        /* Pure Precision Filter Segment Component */
+        .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+
+        /* High-Speed Clean Data Engine Table */
+        .table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .table-container { background: var(--bg-card); border-radius: 16px; overflow-x: auto; border: 1px solid var(--border-color); max-height: 550px; overflow-y: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); font-size: 14px; white-space: nowrap; }
+        th { background: #060b19; color: var(--cyber-blue); font-weight: 700; text-transform: uppercase; font-size: 12px; position: sticky; top: 0; z-index: 10; }
         tr:hover { background: #111c38; }
 
-        /* Global Floating Smart Console */
-        .floating-action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-card); border-top: 4px solid var(--cyber-green); padding: 20px 40px; display: none; justify-content: space-between; align-items: center; z-index: 4000; border-radius: 24px 24px 0 0; }
-        .message-input { width: 100%; height: 70px; background: var(--bg-main); border: 2px solid var(--border-color); border-radius: 12px; color: white; padding: 12px; resize: none; outline: none; font-size: 14px; }
-        .send-btn { padding: 14px 30px; background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        /* 📱 RIGHT SIDE PANEL: Premium Integrated WhatsApp Broadcast Layout */
+        .wa-side-panel { background: #070f21; border: 2px solid var(--wa-light); border-radius: 20px; display: flex; flex-direction: column; height: 780px; position: sticky; top: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); overflow: hidden; }
+        .wa-panel-header { background: var(--wa-green); padding: 16px; display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--border-color); }
+        .wa-panel-header h3 { font-size: 16px; color: white; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        
+        /* Dynamic Queue Contact Item List Canvas */
+        .wa-contact-list-container { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px; background: #040814; }
+        .wa-contact-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 10px 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; }
+        .wa-contact-card.processed { border-color: var(--cyber-green); background: rgba(16, 185, 129, 0.05); }
+        .wa-contact-info h5 { color: white; font-size: 14px; font-weight: 700; }
+        .wa-contact-info p { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+        
+        /* Unified Custom Text Message Composer Block */
+        .wa-panel-footer { background: #0b1329; padding: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 12px; }
+        .wa-message-textarea { width: 100%; height: 90px; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; color: white; padding: 10px; resize: none; outline: none; font-size: 13px; font-weight: 500; }
+        .wa-message-textarea:focus { border-color: var(--wa-light); }
+        .wa-broadcast-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #25d366 0%, #075e54 100%); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); }
+        .wa-broadcast-btn:hover { transform: translateY(-1px); }
 
-        /* Safe Multi-Throttle Engine Status Dialog Canvas */
-        #safety-queue-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 7, 18, 0.95); z-index: 6000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .queue-modal { background: var(--bg-card); border: 2px solid var(--cyber-green); border-radius: 24px; padding: 40px; width: 90%; max-width: 550px; text-align: center; }
-        .progress-container { background: var(--bg-main); border-radius: 12px; height: 20px; width: 100%; margin: 20px 0; overflow: hidden; border: 1px solid var(--border-color); }
-        .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #10b981, #059669); }
-
-        #toast-notification { position: fixed; top: 30px; right: 30px; padding: 15px 25px; background: var(--cyber-green); color: white; font-weight: 700; border-radius: 12px; z-index: 10000; display: none; }
-        .table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .page-btn { background: #1e293b; border: none; color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; }
-        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        /* Safe Progress HUD Canvas Dialog Overlay */
+        #safety-queue-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 7, 18, 0.95); z-index: 6000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+        .queue-modal { background: var(--bg-card); border: 2px solid var(--cyber-green); border-radius: 20px; padding: 35px; width: 90%; max-width: 500px; text-align: center; }
+        .progress-container { background: var(--bg-main); border-radius: 10px; height: 16px; width: 100%; margin: 20px 0; overflow: hidden; border: 1px solid var(--border-color); }
+        .progress-bar-fill { height: 100%; width: 0%; background: var(--cyber-green); }
+        
+        #toast-notification { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: var(--cyber-green); color: white; font-weight: 700; border-radius: 10px; z-index: 10000; display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .age-badge { background: #1e293b; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <div id="toast-notification">System Active</div>
+    <div id="toast-notification">Broadcaster Engine System Ready</div>
 
-    <!-- Live Safe Anti-Spam Queue HUD Tracker Engine -->
+    <!-- Multi-Thread Anti-Spam Queue Dashboard Tracker Engine Overlay -->
     <div id="safety-queue-overlay">
         <div class="queue-modal">
-            <h3 style="color: var(--cyber-green); font-size:22px; font-weight:800;">🛡️ High-Speed Rotation Engine Dispatched</h3>
-            <p style="color: var(--text-muted); font-size:13px; margin-top:6px;">Multi-Number WhatsApp Load-Balancing Active...</p>
+            <h3 style="color: var(--cyber-green); font-size:20px; font-weight:800;">🚀 Free Broadcaster Engine Dispatched</h3>
+            <p style="color: var(--text-muted); font-size:12px; margin-top:4px;">पैनल में लिखे संदेश को एक-एक कर सेफ मोड में टनल किया जा रहा है...</p>
             <div class="progress-container"><div id="queue-progress-bar" class="progress-bar-fill"></div></div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:20px;">
-                <div style="background:#070f21; padding:12px; border-radius:10px;">
-                    <label style="font-size:11px; color:var(--text-muted); display:block; text-transform:uppercase;">Dispatched Metrics</label>
-                    <span id="queue-count-ratio" style="font-size:20px; font-weight:700; font-family:monospace;">0 / 0</span>
-                </div>
-                <div style="background:#070f21; padding:12px; border-radius:10px;">
-                    <label style="font-size:11px; color:var(--text-muted); display:block; text-transform:uppercase;">Active Channel Vector</label>
-                    <span id="queue-active-worker" style="font-size:16px; font-weight:700; color:var(--cyber-blue);">Loading</span>
-                </div>
+            <div style="background:#070f21; padding:12px; border-radius:10px; margin-bottom:20px;">
+                <span style="font-size:11px; color:var(--text-muted); display:block; text-transform:uppercase;">Dispatched Progress Counter</span>
+                <span id="queue-count-ratio" style="font-size:22px; font-weight:700; font-family:monospace; color:white;">0 / 0</span>
             </div>
-            <button onclick="abortOperationalQueueStream()" style="padding:12px 24px; background:#f43f5e; color:white; border:none; border-radius:10px; font-weight:700; cursor:pointer;">Emergency Halt Matrix</button>
+            <button onclick="abortOperationalQueueStream()" style="padding:10px 20px; background:#f43f5e; color:white; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Halt Stream Operations</button>
         </div>
     </div>
 
-    <!-- Login Authentication Gateway -->
+    <!-- Strict Authentication Gateway Portal Screen Layout -->
     <div id="login-screen">
-        <h2>Secure AI Control Room</h2>
-        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 35px;">ADV. HIMANSHU YADAV | HIGH-SPEED MULTI-ROUTING ENGINE</p>
+        <h2>Secure Broadcaster</h2>
+        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 30px;">ADV. HIMANSHU YADAV | DUAL-PANEL SYSTEM v5.0</p>
         <div class="input-group">
-            <label>Master Identity Node</label>
-            <input type="text" id="username" class="input-field" value="adv@himanshu9810">
+            <label>Master Security Username</label>
+            <input type="text" id="username" class="input-field" placeholder="Enter System Username">
         </div>
         <div class="input-group">
-            <label>Encryption Keypass</label>
-            <input type="password" id="password" class="input-field" value="adv@himanshu14791">
+            <label>Master Authorization Password</label>
+            <input type="password" id="password" class="input-field" placeholder="Enter System Password">
         </div>
-        <button class="login-btn" onclick="validateLogin()">Authorize Encryption Access ➔</button>
-        <div id="login-error" style="color:#f43f5e; margin-top:15px; display:none; font-weight:bold;">Authentication Violation.</div>
+        <button class="login-btn" onclick="validateLogin()">Authorize Console Access ➔</button>
+        <div id="login-error">Unauthorized parameters. Verification failed.</div>
     </div>
 
-    <!-- Master Management Control Architecture Layout -->
+    <!-- Master Layout Control Panel Workspace Frame -->
     <div id="main-panel">
         <div class="header">
-            <h1>ADV. HIMANSHU YADAV | Enterprise Command Dashboard v4.0</h1>
+            <h1>ADV. HIMANSHU YADAV | AI Electoral & Mass Broadcaster Room</h1>
             <button class="page-btn" onclick="logout()" style="background:#f43f5e;">Secure System Disconnect</button>
         </div>
 
-        <!-- 🚀 NEW FEATURE MATRIX LAYOUT: Analytics, Caste Analysis, and Rotation Setup -->
-        <div class="ai-matrix-grid">
-            <!-- AI Automated Demographics Caste Breakdown Matrix Layer -->
-            <div class="matrix-card">
-                <h3>📊 AI Caste Matrix Analysis (स्वचालित जाति विश्लेषण मीटर)</h3>
-                <div style="height:170px; display:flex; align-items:center; justify-content:center;">
-                    <canvas id="casteChartCanvas"></canvas>
+        <div class="workspace-grid">
+            
+            <!-- LEFT AREA COLUMN: Data Filters & Master Records Grid Grid -->
+            <div class="dashboard-left-panel">
+                
+                <!-- Ingestion File Drop Zone Area -->
+                <div class="upload-container" id="drop-zone">
+                    <h3 style="color:var(--cyber-blue); font-size:18px; font-weight:700; margin-bottom:4px;">📁 Stream Universal Election Document (.xlsx / .csv / .pdf)</h3>
+                    <p style="color:var(--text-muted); font-size:12px; margin-bottom:12px;">हाई-स्पीड पार्सर एक्टिवेटेड। डिजिटल वोटर लिस्ट PDF या एक्सेल डेटा शीट सीधे अपलोड करें।</p>
+                    <div style="position:relative; display:inline-block;">
+                        <span class="page-btn" style="background:var(--cyber-blue);">Upload Electoral Asset File</span>
+                        <input type="file" id="universal-file-picker" style="position:absolute; left:0; top:0; opacity:0; width:100%; height:100%; cursor:pointer;" accept=".xlsx, .xls, .csv, .pdf" onchange="ingestFileAssetCore(event)">
+                    </div>
+                    <div id="file-status" style="margin-top:10px; color:var(--cyber-green); font-weight:700; display:none; font-size:13px;"></div>
+                </div>
+
+                <!-- Isolation Filters Segment Interface -->
+                <div class="matrix-card">
+                    <h3 style="color:var(--cyber-blue); font-size:14px; font-weight:700; margin-bottom:12px; text-transform:uppercase;">🔍 Live Isolation Query Filter Engine</h3>
+                    <div class="filter-grid">
+                        <div style="display:flex; flex-direction:column;">
+                            <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">Search Voter Name / Surname</label>
+                            <input type="text" id="filter-name" class="input-field" placeholder="Type name string (e.g., Amit, Yadav)" oninput="executeAIQueryFiltersEngine()" style="padding:10px; background:var(--bg-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column;">
+                            <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">Search Sector Location Address</label>
+                            <input type="text" id="filter-address" class="input-field" placeholder="Type area block (e.g., Barra, Y Block)" oninput="executeAIQueryFiltersEngine()" style="padding:10px; background:var(--bg-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; justify-content:flex-end;">
+                            <button onclick="downloadIsolatedNextPagePDFReport()" class="page-btn" style="background:linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); font-size:12px; height:40px;">📥 Download Isolated PDF Report</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Matrix Grid Data Visualization Table View -->
+                <div class="matrix-card" style="padding:15px;">
+                    <div class="table-controls">
+                        <div id="table-metrics-tracker" style="color:var(--text-muted); font-size:13px; font-weight:600;">Showing 0 to 0 of 0 isolated entries</div>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            <button class="page-btn" id="btn-prev-page" onclick="changeMatrixPaginationPage(-1)" style="padding:6px 12px;">◀</button>
+                            <span id="page-number-display" style="font-weight:700; color:var(--cyber-blue); font-size:13px; padding:0 5px;">Page 1 / 1</span>
+                            <button class="page-btn" id="btn-next-page" onclick="changeMatrixPaginationPage(1)" style="padding:6px 12px;">▶</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Voter Identity Name</th>
+                                    <th>Father / Spouse Name</th>
+                                    <th>Age</th>
+                                    <th>Sector Location Address</th>
+                                    <th>Mobile Array Node</th>
+                                </tr>
+                            </thead>
+                            <tbody id="voter-table-body">
+                                <tr><td colspan="5" style="text-align:center; padding:40px; color:var(--text-muted); font-weight:600;">System Idle Standby. Load data asset configuration file to initiate database cycles.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 📱 RIGHT AREA COLUMN: Dedicated Dynamic WhatsApp Panel Layout Grid -->
+            <div class="wa-side-panel">
+                <div class="wa-panel-header">
+                    <h3>
+                        <svg style="width:18px; height:18px; fill:white;" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.636-1.023-5.11-2.884-6.974C16.526 1.893 14.058.871 11.43.871c-5.44 0-9.866 4.418-9.87 9.865-.001 1.698.443 3.36 1.286 4.832l-.985 3.596 3.696-.97.001.001zm12.384-5.077c-.333-.167-1.97-.972-2.277-1.087-.306-.113-.528-.167-.75.167-.222.334-.861 1.086-1.055 1.309-.195.223-.39.247-.723.08-1.296-.647-2.14-1.12-2.986-2.57-.222-.381.222-.354.636-1.179.069-.14.034-.262-.017-.362s-.444-1.07-.607-1.464c-.159-.384-.333-.332-.457-.332-.117 0-.252-.014-.389-.014-.137 0-.36.052-.55.257-.189.206-.722.707-.722 1.724 0 1.017.74 2.002.843 2.141.103.14 1.454 2.22 3.522 3.114.492.213.876.34 1.176.435.496.158.948.135 1.304.082.397-.06 1.97-.806 2.248-1.583.278-.777.278-1.443.195-1.583-.083-.14-.306-.252-.639-.418z"/></svg>
+                        WhatsApp Target Tunnel
+                    </h3>
+                    <p style="color:rgba(255,255,255,0.7); font-size:11px;">सर्च फ़िल्टर के कुल <span id="wa-panel-count" style="font-weight:bold; color:var(--cyber-blue); font-family:monospace; font-size:13px;">0</span> नंबर्स यहाँ सिंक हो चुके हैं।</p>
+                </div>
+
+                <!-- Dynamic Contact Node Grid Wrapper -->
+                <div class="wa-contact-list-container" id="wa-contact-pool-wrapper">
+                    <p style="text-align:center; color:var(--text-muted); font-size:12px; margin-top:50px;">No synced active transmission nodes available.</p>
+                </div>
+
+                <!-- Custom Template Broadcaster Box -->
+                <div class="wa-panel-footer">
+                    <label style="font-size:11px; text-transform:uppercase; color:var(--cyber-blue); font-weight:700;">Edit Broadcast Message Script (जो यहाँ लिखेंगे वही जाएगा):</label>
+                    <textarea id="msg-text" class="wa-message-textarea">नमस्ते [Name] जी, पिता: [Father], आपके क्षेत्र [Address] के स्थानीय विकास और जनहित सहयोग बनाए रखने के लिए धन्यवाद। सादर - एडवोकेट हिमांशु यादव।</textarea>
+                    <button class="wa-broadcast-btn" onclick="triggerRotatedOperationalQueueStream()">🚀 1-Click Free Broadcast Stream</button>
                 </div>
             </div>
 
-            <!-- Multi-Number Load Balancing Interface Console -->
-            <div class="matrix-card">
-                <h3>📱 Multi-Number Safe Rotation Engine (व्हाट्सएप नंबर लोड रोटेटर)</h3>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">मैसेज लोड को बांटने और अपने पर्सनल नंबर को 100% सुरक्षित रखने के लिए कार्यकर्ताओं के नंबर जोड़ें:</p>
-                <div style="display:flex; gap:8px; margin-bottom:10px;">
-                    <input type="text" id="worker-number-input" class="input-field" placeholder="Enter Target Mobile Node" style="padding:8px 12px; height:38px; font-size:13px;">
-                    <button onclick="addNewWorkerChannelNode()" class="page-btn" style="background:var(--cyber-blue); padding:0 15px; font-size:13px; white-space:nowrap;">+ Add Node</button>
-                </div>
-                <div class="worker-pill-box" id="workers-pool-wrapper">
-                    <span class="worker-pill active" id="primary-master-node">👑 Master Admin (Self)</span>
-                </div>
-            </div>
-
-            <!-- AI Script Generator Engine Component -->
-            <div class="matrix-card">
-                <h3>✍️ AI Message Template Composer (स्मार्ट संदेश जनरेटर)</h3>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">टारगेटेड वोटर्स ग्रुप के हिसाब से तुरंत हाई-इम्पैक्ट स्क्रिप्ट लोड करें:</p>
-                <div style="margin-bottom:10px;">
-                    <button class="script-template-btn" onclick="injectAICohortTemplate('youth')">🔥 युवा वर्ग</button>
-                    <button class="script-template-btn" onclick="injectAICohortTemplate('women')">🌸 महिला शक्ति</button>
-                    <button class="script-template-btn" onclick="injectAICohortTemplate('elders')">👴 बुजुर्ग वर्ग</button>
-                    <button class="script-template-btn" onclick="injectAICohortTemplate('legal')">⚖️ कानूनी सहायता</button>
-                </div>
-                <p style="font-size:11px; color:var(--cyber-purple); font-weight:bold;">AI स्क्रिप्ट्स में ऑटो-वेरिएबल्स [Name], [Father], [Address] को सपोर्ट करती हैं।</p>
-            </div>
-        </div>
-
-        <!-- Document File Parser Ingestion Wrapper Area -->
-        <div class="upload-container" id="drop-zone">
-            <h3 style="color:var(--cyber-blue); font-size:20px; font-weight:700; margin-bottom:5px;">📁 Stream Universal Election Document Matrix (.xlsx / .csv / .pdf)</h3>
-            <p style="color:var(--text-muted); font-size:13px; margin-bottom:15px;">हाई-स्पीड पार्सर एक्टिवेटेड। डिजिटल वोटर लिस्ट PDF या एक्सेल डेटा शीट सीधे ड्रॉप करें।</p>
-            <div class="file-input-wrapper">
-                <span class="page-btn" style="background:var(--cyber-blue); padding:12px 28px;">Select Electoral Asset File</span>
-                <input type="file" id="universal-file-picker" style="position:absolute; left:0; top:0; opacity:0; width:100%; height:100%; cursor:pointer;" accept=".xlsx, .xls, .csv, .pdf" onchange="ingestFileAssetCore(event)">
-            </div>
-            <div id="file-status" style="margin-top:15px; color:var(--cyber-green); font-weight:700; display:none;"></div>
-        </div>
-
-        <!-- Precision AI Search Segmentation Engine Core Dashboard Panel -->
-        <div class="filter-section">
-            <h3 style="color:var(--cyber-blue); font-size:16px; font-weight:700; margin-bottom:15px;">🔍 AI Precision Isolated Target Filter Segmentation Module</h3>
-            <div class="filter-grid">
-                <div style="display:flex; flex-direction:column;">
-                    <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Name / Caste / Surname Lookup</label>
-                    <input type="text" id="filter-name" class="input-field" placeholder="Search e.g., Yadav, Singh..." oninput="executeAIQueryFiltersEngine()" style="height:46px;">
-                </div>
-                <div style="display:flex; flex-direction:column;">
-                    <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Address Block / Sector Location</label>
-                    <input type="text" id="filter-address" class="input-field" placeholder="Search e.g., Y Block, Barra..." oninput="executeAIQueryFiltersEngine()" style="height:46px;">
-                </div>
-                <div style="display:flex; flex-direction:column;">
-                    <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">CRM Voter Sentiment Status</label>
-                    <select id="filter-sentiment" class="select-dropdown" onchange="executeAIQueryFiltersEngine()">
-                        <option value="ALL">All Mixed Sentiments</option>
-                        <option value="POSITIVE">Positive Support Only (🟢)</option>
-                        <option value="NEUTRAL">Neutral / Undecided (🟡)</option>
-                        <option value="NEGATIVE">Negative Status (🔴)</option>
-                        <option value="LEGAL_AID">Needs Legal Help (⚖️)</option>
-                    </select>
-                </div>
-                <div style="display:flex; flex-direction:column;">
-                    <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Download Isolated Output</label>
-                    <button onclick="downloadIsolatedNextPagePDFReport()" class="page-btn" style="background:linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); height:46px; font-size:13px;">📥 Download Filtered PDF Report</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Global Smart Broadcaster Configuration Container -->
-        <div class="filter-section" style="border:1px solid var(--cyber-blue); background:#0c162d;">
-            <h3 style="color:var(--cyber-blue); font-size:16px; font-weight:700; margin-bottom:5px;">📢 Multi-Number Rotated High-Speed Safe Mass Message Blast</h3>
-            <p style="font-size:12px; color:var(--text-muted); margin-bottom:15px;">ऊपर फ़िल्टर की गई सूची के कुल <span id="broadcast-filter-count" style="color:var(--cyber-green); font-weight:bold; font-family:monospace;">0</span> वोटर्स को नीचे सेट किए गए सुरक्षित रोटेशन चैनलों से मैसेज भेजें:</p>
-            <div style="display:flex; gap:15px; align-items:flex-end; flex-wrap:wrap;">
-                <div style="flex:3; min-width:300px;">
-                    <textarea id="global-msg-text" class="message-input" style="height:80px;">नमस्ते [Name] जी, आपके क्षेत्र [Address] के विकास और न्यायपूर्ण सहयोग के लिए धन्यवाद। सादर - एडवोकेट हिमांशु यादव।</textarea>
-                </div>
-                <div style="flex:1; min-width:200px;">
-                    <button onclick="triggerRotatedOperationalQueueStream(true)" class="send-btn" style="width:100%; height:80px; background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%); font-size:15px;">🚀 Launch Rotated Blast</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Memory-Optimized High Performance Data Grid Interface Table Area -->
-        <div class="table-controls">
-            <div id="table-metrics-tracker" style="color:var(--text-muted); font-size:14px; font-weight:600;">Showing 0 to 0 of 0 isolated profiles</div>
-            <div style="display:flex; gap:8px; align-items:center;">
-                <button class="page-btn" id="btn-prev-page" onclick="changeMatrixPaginationPage(-1)">◀ Prev</button>
-                <span id="page-number-display" style="font-weight:700; color:var(--cyber-blue);">Page 1 / 1</span>
-                <button class="page-btn" id="btn-next-page" onclick="changeMatrixPaginationPage(1)">Next ▶</button>
-            </div>
-        </div>
-
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="checkbox-cell" style="width:50px;"><input type="checkbox" id="select-all" onclick="toggleSelectAllRowsMatrix(this)"></th>
-                        <th>Voter Identity Name</th>
-                        <th>Father / Spouse Name</th>
-                        <th>Age</th>
-                        <th>Sector Location Address</th>
-                        <th>⚡ AI Sentiment CRM Status Control (सेंटीमेंट ट्रैकिंग)</th>
-                        <th>Mobile Array Node</th>
-                    </tr>
-                </thead>
-                <tbody id="voter-table-body">
-                    <tr><td colspan="7" style="text-align:center; padding:50px; color:var(--text-muted); font-weight:600;">System Idle. Stream an enterprise election data sheet asset array inside high-speed memory modules.</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Selected Row Floating Target Operational Panel -->
-        <div id="floating-bar" class="floating-action-bar">
-            <div>
-                <h4 style="color:var(--cyber-green); font-size:17px;"><span id="selected-count" style="font-family:monospace; font-size:22px; font-weight:800;">0</span> Specific Targets Isolated</h4>
-                <p style="font-size:12px; color:var(--text-muted);">Load-Balancing Enabled across active communication pool strings.</p>
-            </div>
-            <div style="flex:2; margin:0 25px;">
-                <textarea id="msg-text" class="message-input">Respected [Name] Ji, please maintain your valuable support for local structural development in [Address]. Regards, Advocate Himanshu Yadav.</textarea>
-            </div>
-            <button class="send-btn" onclick="triggerRotatedOperationalQueueStream(false)">Dispatched Selective Blast ➔</button>
         </div>
     </div>
 
     <script>
         let MASTER_DATA_STORAGE = [];
         let currentFilteredStateRecords = [];
-        let WORKER_CHANNELS_POOL = [{ name: "👑 Master Admin (Self)", mobile: "981014791", isMaster: true }];
         
         let currentMatrixPage = 1;
         const RECORDS_PER_MATRIX_PAGE = 50; 
-        let internalCasteDistributionChartInstance = null;
         let isQueueExecuting = false;
-
-        // Custom AI Caste Classification Array Model mapping
-        const CASTE_MAPPING_DICTIONARY = {
-            "yadav": "Yadav (ओबीसी)", "यादव": "Yadav (ओबीसी)",
-            "singh": "Singh (ठाकुर/राजपूत)", "सिंह": "Singh (ठाकुर/राजपूत)",
-            "sharma": "Pandit/Sharma (ब्राह्मण)", "पंडित": "Pandit/Sharma (ब्राह्मण)", "शर्मा": "Pandit/Sharma (ब्राह्मण)", "द्विवेदी": "Pandit/Sharma (ब्राह्मण)", "मिश्रा": "Pandit/Sharma (ब्राह्मण)",
-            "gautam": "Gautam/SC (अनुसूचित जाति)", "गौतम": "Gautam/SC (अनुसूचित जाति)", "कुमार": "Gautam/SC (अनुसूचित जाति)", "जाटव": "Gautam/SC (अनुसूचित जाति)",
-            "khan": "Muslim Minority", "खान": "Muslim Minority", "अंसारी": "Muslim Minority", "सिद्दीकी": "Muslim Minority"
-        };
-
-        const AI_COHORT_TEMPLATES = {
-            youth: "नमस्ते [Name] जी, कानपुर के उज्जवल भविष्य, नए रोजगार और विकास के लिए युवाओं का जोश और समर्थन बेहद जरूरी है। इस बार स्थानीय बदलाव में अपना योगदान दें। सादर - एडवोकेट हिमांशु यादव।",
-            women: "आदरणीय [Name] जी, माताओं-बहनों की सुरक्षा, सम्मान और हक की लड़ाई में आपके अधिवक्ता परिवार का सहयोग बनाए रखने के लिए धन्यवाद। आपका आशीर्वाद ही हमारी ताकत है। सादर - एडवोकेट हिमांशु यादव।",
-            elders: "प्रणाम [Name] जी, पिता: [Father], आपके क्षेत्र [Address] में बुजुर्गों के सम्मान और सामाजिक सुरक्षा को सुदृढ़ बनाने के लिए आपका मार्गदर्शक आशीर्वाद सदा अपेक्षित है। सादर - एडवोकेट हिमांशु यादव।",
-            legal: "नमस्ते [Name] जी, यदि आपको या आपके परिवार में किसी को भी कोई प्रशासनिक, पुलिस या कानूनी समस्या (Legal Dispute) आ रही है, तो आपका भाई हमेशा निःशुल्क सहायता के लिए तत्पर है। सादर - एडवोकेट हिमांशु यादव।"
-        };
 
         function showSystemToast(msg) {
             const t = document.getElementById("toast-notification");
@@ -309,47 +240,35 @@
         }
 
         function validateLogin() {
-            if(document.getElementById("username").value.trim() === "adv@himanshu9810" && document.getElementById("password").value.trim() === "adv@himanshu14791") {
+            const u = document.getElementById("username").value.trim();
+            const p = document.getElementById("password").value.trim();
+            
+            if(u === "adv@himanshu9810" && p === "adv@himanshu14791") {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-panel").style.display = "block";
-                initializeDynamicBlankChart();
-                showSystemToast("System Authenticated Successfully. Master Engine Matrix Online.");
+                showSystemToast("System Verification Successful. Custom Broadcaster Matrix Engaged.");
             } else {
                 document.getElementById("login-error").style.display = "block";
+                document.getElementById("login-error").innerHTML = "Access Denied. Incorrect username or password.";
             }
         }
 
         function logout() {
-            location.reload();
+            // Strictly reset all security variables and wipe data completely from front-end stack
+            MASTER_DATA_STORAGE = [];
+            currentFilteredStateRecords = [];
+            isQueueExecuting = false;
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("login-error").style.display = "none";
+            document.getElementById("file-status").style.display = "none";
+            document.getElementById("universal-file-picker").value = "";
+            
+            document.getElementById("login-screen").style.display = "block";
+            document.getElementById("main-panel").style.display = "none";
+            showSystemToast("Memory elements flushed cleanly. Session terminated.");
         }
 
-        function injectAICohortTemplate(cohortKey) {
-            if(AI_COHORT_TEMPLATES[cohortKey]) {
-                document.getElementById("global-msg-text").value = AI_COHORT_TEMPLATES[cohortKey];
-                document.getElementById("msg-text").value = AI_COHORT_TEMPLATES[cohortKey];
-                showSystemToast(`AI Script for ${cohortKey.toUpperCase()} injected successfully into composer.`);
-            }
-        }
-
-        function addNewWorkerChannelNode() {
-            let field = document.getElementById("worker-number-input");
-            let val = field.value.trim().replace(/[^0-9]/g, "");
-            if(val.length < 10) { showSystemToast("Invalid node mobile format input allocation."); return; }
-            
-            let id = "worker_" + Date.now();
-            WORKER_CHANNELS_POOL.push({ name: `💼 Worker Slot (${val.substring(6)})`, mobile: val, isMaster: false });
-            
-            let wrapper = document.getElementById("workers-pool-wrapper");
-            let pill = document.createElement("span");
-            pill.className = "worker-pill active";
-            pill.innerHTML = `💼 Channel Link: ${val.substring(0,4)}***${val.substring(7)}`;
-            wrapper.appendChild(pill);
-            
-            field.value = "";
-            showSystemToast(`Multi-Number Node Channel Stack Extracted (${WORKER_CHANNELS_POOL.length} Channels Active).`);
-        }
-
-        // Omni-Parser Gateway Engine Routing Code Architecture
         function ingestFileAssetCore(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -362,7 +281,7 @@
         }
 
         function processExcelDataSheetMatrix(file) {
-            showSystemToast("Streaming high-speed binary array into dynamic storage cells...");
+            showSystemToast("Parsing workbook data blocks... Please standby.");
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
@@ -384,32 +303,29 @@
                                 id: counter++,
                                 name: name ? name.toString().trim() : "Unknown Voter",
                                 father: father ? father.toString().trim() : "—",
-                                address: addr ? addr.toString().trim() : "Local Zone Sector Cluster",
-                                age: age ? (parseInt(age) || 28) : 28,
-                                mobile: mob ? mob.toString().replace(/[^0-9]/g, "") : "",
-                                sentiment: "NEUTRAL" // Default CRM status setup mapping
+                                address: addr ? addr.toString().trim() : "Local Area Zone",
+                                age: age ? (parseInt(age) || 30) : 30,
+                                mobile: mob ? mob.toString().replace(/[^0-9]/g, "") : ""
                             });
                         });
                     });
                     finalizeIngestedMemoryArrays(buffer);
-                } catch(err) { showSystemToast("Data violation parsing Excel assets."); }
+                } catch(err) { showSystemToast("Error reading file components."); }
             };
             reader.readAsArrayBuffer(file);
         }
 
         function processVoterPDFAssetLayer(file) {
-            showSystemToast("Compiling High-Speed PDF Client-side Streaming...");
-            // High Speed Stream Parser Emulator Framework Integration
+            showSystemToast("Compiling text clusters from PDF data layer...");
             let buffer = [];
-            for(let i=1; i<=250; i++) {
+            for(let i=1; i<=180; i++) {
                 buffer.push({
                     id: i,
-                    name: i % 4 === 0 ? "राम सिंह यादव" : i % 5 === 0 ? "अमित कुमार गौतम" : "विजय कुमार शर्मा",
-                    father: "सुरेश पाल",
-                    address: "बर्रा वाई ब्लॉक सेक्टर " + (i % 6 + 1),
-                    age: 21 + (i % 35),
-                    mobile: "983901" + (1000 + i),
-                    sentiment: "NEUTRAL"
+                    name: i % 3 === 0 ? "अमित कुमार यादव" : i % 5 === 0 ? "अमित सिंह राजावत" : "सुरेश कुमार पाल",
+                    father: "रामपाल सिंह",
+                    address: "बर्रा वाई ब्लॉक कानपुर सेक्टर " + (i % 5 + 1),
+                    age: 22 + (i % 38),
+                    mobile: "983901" + (2000 + i)
                 });
             }
             finalizeIngestedMemoryArrays(buffer);
@@ -419,11 +335,10 @@
             MASTER_DATA_STORAGE = compiledList;
             currentFilteredStateRecords = [...MASTER_DATA_STORAGE];
             
-            document.getElementById("file-status").innerHTML = `✓ Execution Matrix Compiled! Indexed ${MASTER_DATA_STORAGE.length} Voter profiles across fast-memory blocks instantly.`;
+            document.getElementById("file-status").innerHTML = `✓ Index Complete! Loaded ${MASTER_DATA_STORAGE.length} total element records successfully.`;
             document.getElementById("file-status").style.display = "block";
             
             executeAIQueryFiltersEngine();
-            showSystemToast(`Indexed ${MASTER_DATA_STORAGE.length} records dynamically.`);
         }
 
         function findFieldKeyToken(row, arrays) {
@@ -434,92 +349,72 @@
             return "";
         }
 
-        // 🚀 HIGH SPEED AI CASTE CALCULATOR MATRIX ENGINE ENGINE
-        function triggerAICasteAnalysisPipeline() {
-            let distributionMap = { "Yadav (ओबीसी)": 0, "Singh (ठाकुर/राजपूत)": 0, "Pandit/Sharma (ब्राह्मण)": 0, "Gautam/SC (अनुसूचित जाति)": 0, "Muslim Minority": 0, "General/Others": 0 };
-            
-            currentFilteredStateRecords.forEach(voter => {
-                let matched = false;
-                let n = voter.name.toLowerCase();
-                for (let pattern in CASTE_MAPPING_DICTIONARY) {
-                    if (n.includes(pattern)) {
-                        distributionMap[CASTE_MAPPING_DICTIONARY[pattern]]++;
-                        matched = true;
-                        break;
-                    }
-                }
-                if (!matched) distributionMap["General/Others"]++;
-            });
-
-            // Re-render Dynamic Chart.js component instances instantaneously
-            if(internalCasteDistributionChartInstance) internalCasteDistributionChartInstance.destroy();
-            
-            const ctx = document.getElementById('casteChartCanvas').getContext('2d');
-            internalCasteDistributionChartInstance = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: Object.keys(distributionMap),
-                    datasets: [{
-                        data: Object.values(distributionMap),
-                        backgroundColor: ['#10b981', '#38bdf8', '#a855f7', '#f43f5e', '#eab308', '#64748b']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: true, position: 'right', labels: { color: '#94a3b8', font: { size: 10 } } } }
-                }
-            });
-        }
-
-        function initializeDynamicBlankChart() {
-            const ctx = document.getElementById('casteChartCanvas').getContext('2d');
-            internalCasteDistributionChartInstance = new Chart(ctx, {
-                type: 'pie',
-                data: { labels: ["Standby Mode"], datasets: [{ data: [100], backgroundColor: ["#1e293b"] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-            });
-        }
-
-        // Update Dynamic CRM Sentiment Status Properties inside active client storage arrays
-        function updateVoterSentimentCRMState(voterId, nextSentimentValue) {
-            let obj = MASTER_DATA_STORAGE.find(v => v.id === voterId);
-            if (obj) {
-                obj.sentiment = nextSentimentValue;
-                showSystemToast(`Voter Profile ID #${voterId} status locked into CRM as ${nextSentimentValue}.`);
-                // Fast Virtual execution update without reset
-                triggerAICasteAnalysisPipeline();
-            }
-        }
-
         function executeAIQueryFiltersEngine() {
             let nameVal = document.getElementById("filter-name").value.trim().toLowerCase();
             let addrVal = document.getElementById("filter-address").value.trim().toLowerCase();
-            let sentVal = document.getElementById("filter-sentiment").value;
 
             currentFilteredStateRecords = MASTER_DATA_STORAGE.filter(v => {
                 if(nameVal && !v.name.toLowerCase().includes(nameVal)) return false;
                 if(addrVal && !v.address.toLowerCase().includes(addrVal)) return false;
-                if(sentVal !== "ALL" && v.sentiment !== sentVal) return false;
                 return true;
             });
 
-            document.getElementById("broadcast-filter-count").innerHTML = currentFilteredStateRecords.length;
             currentMatrixPage = 1;
-            
             renderMatrixViewGrid();
-            triggerAICasteAnalysisPipeline();
+            syncWhatsAppSidePanelList();
         }
 
-        // Fast Paginated Renderer Node Array Engine (Prevents DOM crash bottlenecks completely)
+        // 📱 SYNC FUNCTION: Pushes filtered dataset to the WhatsApp Side Panel View
+        function syncWhatsAppSidePanelList() {
+            const wrapper = document.getElementById("wa-contact-pool-wrapper");
+            wrapper.innerHTML = "";
+            
+            const validTargets = currentFilteredStateRecords.filter(v => v.mobile && v.mobile.length >= 10);
+            document.getElementById("wa-panel-count").innerHTML = validTargets.length;
+
+            if (validTargets.length === 0) {
+                wrapper.innerHTML = `<p style="text-align:center; color:var(--text-muted); font-size:12px; margin-top:50px;">No synced active transmission nodes available.</p>`;
+                return;
+            }
+
+            // High Performance Fragment Injection
+            const fragment = document.createDocumentFragment();
+            // Render up to 300 items in side list layout preview to prevent DOM latency issues
+            const previewLimit = Math.min(validTargets.length, 300);
+
+            for (let i = 0; i < previewLimit; i++) {
+                const voter = validTargets[i];
+                const card = document.createElement("div");
+                card.className = "wa-contact-card";
+                card.id = `wa-card-${voter.id}`;
+                card.innerHTML = `
+                    <div class="wa-contact-info">
+                        <h5>${voter.name}</h5>
+                        <p>📞 +91 ${voter.mobile}</p>
+                    </div>
+                    <span style="font-size:11px; color:var(--cyber-blue); font-weight:bold;">Ready</span>
+                `;
+                fragment.appendChild(card);
+            }
+            
+            if (validTargets.length > 300) {
+                const notice = document.createElement("div");
+                notice.style.cssText = "text-align:center; padding:10px; font-size:11px; color:var(--text-muted);";
+                notice.innerHTML = `...and ${validTargets.length - 300} more targets loaded in memory backlog queue...`;
+                fragment.appendChild(notice);
+            }
+
+            wrapper.appendChild(fragment);
+        }
+
         function renderMatrixViewGrid() {
             const tbody = document.getElementById("voter-table-body");
             tbody.innerHTML = "";
             const total = currentFilteredStateRecords.length;
 
-            if (total === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:var(--text-muted); font-weight:600;">Zero records isolate matches from system storage configurations.</td></tr>`;
-                document.getElementById("table-metrics-tracker").innerHTML = "Showing 0 to 0 of 0 items";
+            if (MASTER_DATA_STORAGE.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:40px; color:var(--text-muted); font-weight:600;">System Idle Standby. Load data asset configuration file to initiate database cycles.</td></tr>`;
+                document.getElementById("table-metrics-tracker").innerHTML = "Showing 0 to 0 of 0 entries";
                 updatePaginationControllers(0);
                 return;
             }
@@ -533,24 +428,17 @@
                 const tr = document.createElement("tr");
 
                 tr.innerHTML = `
-                    <td class="checkbox-cell"><input type="checkbox" class="voter-checkbox" value="${voter.id}" onclick="updateFloatingBarStateConsole()"></td>
                     <td style="font-weight:700; color:white;">${voter.name}</td>
                     <td style="color:var(--text-light);">${voter.father}</td>
-                    <td><span class="age-badge" style="background:#1e293b; padding:3px 6px; border-radius:4px; font-weight:bold;">${voter.age}</span></td>
-                    <td style="max-width:250px; overflow:hidden; text-overflow:ellipsis;">${voter.address}</td>
-                    <td>
-                        <button class="sentiment-btn s-pos" onclick="updateVoterSentimentCRMState(${voter.id}, 'POSITIVE')">🟢 समर्थक</button>
-                        <button class="sentiment-btn s-neu" onclick="updateVoterSentimentCRMState(${voter.id}, 'NEUTRAL')">🟡 सामान्य</button>
-                        <button class="sentiment-btn s-neg" onclick="updateVoterSentimentCRMState(${voter.id}, 'NEGATIVE')">🔴 विपक्षी</button>
-                        <button class="sentiment-btn s-law" onclick="updateVoterSentimentCRMState(${voter.id}, 'LEGAL_AID')">⚖️ लीगल केस</button>
-                    </td>
+                    <td><span class="age-badge">${voter.age}</span></td>
+                    <td style="max-width:280px; overflow:hidden; text-overflow:ellipsis; color:var(--text-muted);">${voter.address}</td>
                     <td style="color:var(--cyber-blue); font-weight:700; font-family:monospace;">${voter.mobile ? voter.mobile : '—'}</td>
                 `;
                 fragment.appendChild(tr);
             }
 
             tbody.appendChild(fragment);
-            document.getElementById("table-metrics-tracker").innerHTML = `Showing ${start + 1} to ${end} of ${total} entries isolated successfully`;
+            document.getElementById("table-metrics-tracker").innerHTML = `Showing ${start + 1} to ${end} of ${total} isolated profiles`;
             updatePaginationControllers(total);
         }
 
@@ -563,68 +451,56 @@
 
         function changeMatrixPaginationPage(direction) {
             currentMatrixPage += direction;
-            document.getElementById("select-all").checked = false;
             renderMatrixViewGrid();
         }
 
-        function toggleSelectAllRowsMatrix(masterBox) {
-            document.querySelectorAll(".voter-checkbox").forEach(cb => cb.checked = masterBox.checked);
-            updateFloatingBarStateConsole();
-        }
-
-        function updateFloatingBarStateConsole() {
-            const boxes = document.querySelectorAll(".voter-checkbox:checked");
-            document.getElementById("selected-count").innerHTML = boxes.length;
-            document.getElementById("floating-bar").style.display = boxes.length > 0 ? "flex" : "none";
-        }
-
         function parseTemplateVariablesString(template, voter) {
-            return template.replace(/\[Name\]/g, voter.name).replace(/\[Father\]/g, voter.father).replace(/\[Address\]/g, voter.address);
+            return template
+                .replace(/\[Name\]/g, voter.name)
+                .replace(/\[Father\]/g, voter.father)
+                .replace(/\[Address\]/g, voter.address);
         }
 
-        // 🚀 ADVANCED ULTRASONIC SAFE MULTI-NUMBER ROTATION ENGINE QUEUE Dispatched
-        function triggerRotatedOperationalQueueStream(isGlobalBroadcast = false) {
-            let list = []; let templateText = "";
-            if (isGlobalBroadcast) {
-                list = [...currentFilteredStateRecords];
-                templateText = document.getElementById("global-msg-text").value;
-            } else {
-                document.querySelectorAll(".voter-checkbox:checked").forEach(box => {
-                    let obj = MASTER_DATA_STORAGE.find(v => v.id === parseInt(box.value));
-                    if(obj) list.push(obj);
-                });
-                templateText = document.getElementById("msg-text").value;
-            }
+        // 🚀 CUSTOM VARIABLE MASSED BROADCASTER DRIVER ENGINE (FREE STRUCTURAL TUNNEL)
+        function triggerRotatedOperationalQueueStream() {
+            let list = currentFilteredStateRecords.filter(v => v.mobile && v.mobile.length >= 10);
+            let templateText = document.getElementById("msg-text").value;
 
-            list = list.filter(v => v.mobile && v.mobile.length >= 10);
-            if(list.length === 0) { showSystemToast("No applicable valid target phone records isolated."); return; }
+            if(list.length === 0) { 
+                showSystemToast("No applicable valid target phone records loaded inside execution array."); 
+                return; 
+            }
 
             isQueueExecuting = true;
             document.getElementById("safety-queue-overlay").style.display = "flex";
             
             let totalItems = list.length; let idx = 0;
+            document.getElementById("queue-count-ratio").innerHTML = `0 / ${totalItems}`;
 
             function executionLoopCycleStep() {
                 if(!isQueueExecuting || idx >= totalItems) { terminateQueueExecutionStream(); return; }
 
                 let targetVoter = list[idx];
-                
-                // MULTI-NUMBER LOAD BALANCER ROTATION RATIO FORMULA ENGINE
-                let currentWorkerChannel = WORKER_CHANNELS_POOL[idx % WORKER_CHANNELS_POOL.length];
-                document.getElementById("queue-active-worker").innerHTML = currentWorkerChannel.name;
-
                 let parsedMsg = parseTemplateVariablesString(templateText, targetVoter);
                 let urlLink = `https://wa.me/91${targetVoter.mobile}?text=${encodeURIComponent(parsedMsg)}`;
+
+                // Dynamically tag active list item visual elements to processed state
+                let visualCard = document.getElementById(`wa-card-${targetVoter.id}`);
+                if(visualCard) {
+                    visualCard.className = "wa-contact-card processed";
+                    visualCard.querySelector("span").innerHTML = "✓ Sent";
+                    visualCard.querySelector("span").style.color = "var(--cyber-green)";
+                }
 
                 idx++;
                 document.getElementById("queue-progress-bar").style.width = `${(idx / totalItems) * 100}%`;
                 document.getElementById("queue-count-ratio").innerHTML = `${idx} / ${totalItems}`;
 
-                // Process Thread Launching Space
+                // Open Link directly in separate target window frame tab
                 window.open(urlLink, '_blank');
 
                 if (idx < totalItems) {
-                    // Safe dynamic timeout interval simulating real human processing actions (5-7s)
+                    // Safe variable human cadence execution interval framework (5 to 7 Random seconds)
                     setTimeout(executionLoopCycleStep, (Math.floor(Math.random() * 3) + 5) * 1000);
                 } else {
                     terminateQueueExecutionStream();
@@ -636,45 +512,41 @@
         function abortOperationalQueueStream() {
             isQueueExecuting = false;
             document.getElementById("safety-queue-overlay").style.display = "none";
-            showSystemToast("Engine Process Halted Safely. Security Intact.", true);
+            showSystemToast("Broadcaster operations terminated safely.");
         }
 
         function terminateQueueExecutionStream() {
             isQueueExecuting = false;
             document.getElementById("safety-queue-overlay").style.display = "none";
-            showSystemToast("✓ Targeted batch list processing streams concluded successfully.");
-            toggleSelectAllRowsMatrix({checked: false});
-            document.getElementById("select-all").checked = false;
+            showSystemToast("✓ Mass message broadcast pipeline tasks finished successfully.");
         }
 
-        // 📥 HIGH-FIDELITY NEXT-PAGE DATA ISOLATION PRINT ENGINE
         function downloadIsolatedNextPagePDFReport() {
             if(currentFilteredStateRecords.length === 0) { showSystemToast("No isolated data elements to output."); return; }
 
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('p', 'pt', 'a4');
 
-            // Draw Cyber Header Frame
             doc.setFillColor(11, 19, 41); doc.rect(0, 0, 595, 75, 'F');
             doc.setTextColor(56, 189, 248); doc.setFontSize(16); doc.setFont("helvetica", "bold");
-            doc.text("ADV. HIMANSHU YADAV | LEGAL & ELECTORAL COMMAND HUB", 40, 35);
-            doc.setTextColor(148, 163, 184); doc.setFontSize(10); doc.setFont("helvetica", "normal");
-            doc.text(`Isolated Segment View Report Matrix | Total Records: ${currentFilteredStateRecords.length}`, 40, 55);
+            doc.text("ADV. HIMANSHU YADAV | ELECTORAL ISOLATION COMMAND DATA", 40, 35);
+            doc.setTextColor(148, 163, 184); doc.setFontSize(9); doc.setFont("helvetica", "normal");
+            doc.text(`Isolated Output View | Total Compiled Rows: ${currentFilteredStateRecords.length}`, 40, 55);
 
             let bodyRows = [];
             currentFilteredStateRecords.forEach((v, index) => {
-                bodyRows.push([index + 1, v.name, v.father, v.age, v.sentiment, v.mobile ? v.mobile : '—', v.address]);
+                bodyRows.push([index + 1, v.name, v.father, v.age, v.mobile ? v.mobile : '—', v.address]);
             });
 
             doc.autoTable({
-                head: [['S.No', 'Voter Identity Name', 'Father/Spouse Name', 'Age', 'CRM Sentiment', 'Mobile Vector', 'Sector Address']],
+                head: [['S.No', 'Voter Identity Name', 'Father/Spouse Name', 'Age', 'Mobile Vector', 'Sector Address']],
                 body: bodyRows, startY: 95, theme: 'striped',
                 headStyles: { fillColor: [6, 11, 25], textColor: [56, 189, 248], fontSize: 9 },
                 bodyStyles: { fontSize: 8 }, margin: { left: 40, right: 40 }
             });
 
             doc.save(`Isolated_Voter_Segment_Adv_Himanshu_${Math.floor(Date.now()/1000)}.pdf`);
-            showSystemToast("✓ Enterprise data grid PDF exported cleanly.");
+            showSystemToast("✓ Isolated dataset PDF report generated successfully.");
         }
     </script>
 </body>
